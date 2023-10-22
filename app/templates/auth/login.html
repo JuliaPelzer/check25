@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post" class="flex flex-col justify-between max-w-md mx-auto">
+  <input class="bg-gray-100 rounded border h-12 m-2 p-4" name="username" id="username" placeholder="Username" required></input>
+  <input class="bg-gray-100 rounded border h-12 m-2 p-4" type="password" name="password" id="password" placeholder="Password" required></input>
+  <div class="flex mx-auto mt-4">
+  <input class="bg-sky-500 px-8 py-4 text-white font-bold rounded-xl" type="submit" value="Log In">
+  </div>
+</form>
+{% endblock %}
