@@ -3,6 +3,11 @@
 This is a online ToDo App to test out flask and tailwindcss. Might be used as a base project.
 
 ## Setup
+initialize dev database
+```shell
+flask init-db
+```
+
 start flask development server
 ```shell
 flask run --debug
