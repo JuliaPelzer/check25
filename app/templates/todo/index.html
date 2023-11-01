@@ -17,7 +17,7 @@
         <ul id="taskList" class="mt-4">
             <!-- Tasks will be dynamically added here -->
             {% for item in items %}
-            <li class="py-2 flex items-center"><input type="checkbox" class="mr-2"><span>{{ item }}</span><button onclick="removeTask(this)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">❌</button></li>
+            <li class="py-2 flex items-center"><input type="checkbox" class="mr-2" {% if item["done"] == true %}checked{% endif %}><span>{{ item["text"] }}</span><button onclick="removeTask(this)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">❌</button></li>
             {% endfor %}
         </ul>
     </div>
@@ -28,6 +28,8 @@
 
             const taskText = taskInput.value;
             if (taskText.trim() !== '') {
+                fetch("http://127.0.0.1:5000/add?done=false&text=" + taskText, { method: "POST" });
+
                 const taskItem = document.createElement('li');
                 taskItem.className = 'py-2 flex items-center';
                 

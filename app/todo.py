@@ -11,7 +11,8 @@ bp = Blueprint('todo', __name__)
 @login_required
 def index():
     db = get_db()
-    items = db.execute("SELECT * FROM task WHERE user_id == ?", "1").fetchall()
+    user_id = str(session.get("user_id"))
+    items = db.execute("SELECT * FROM task WHERE user_id == ?", user_id).fetchall()
     return render_template('todo/index.html', items=items)
 
 @bp.route('/add', methods = ["POST"])
