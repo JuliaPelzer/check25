@@ -5,23 +5,22 @@
 {% endblock %}
 
 {% block content %}
-    <div class="max-w-md mx-auto bg-white rounded p-6 shadow-md">
-        <h1 class="text-2xl font-bold mb-4 text-center">Todo List</h1>
+<div class="max-w-md mx-auto bg-white rounded p-6 shadow-md">
+    <h1 class="text-2xl font-bold mb-4 text-center">Todo List</h1>
 
-        <div class="flex items-center border-b border-gray-300 py-2">
-            <input id="taskInput" type="text" placeholder="Enter a new task"
-                class="w-full outline-none px-2 py-1 rounded-l">
-            <button onclick="addTask()" class="bg-blue-500 text-white px-4 py-1 rounded">Add</button>
-        </div>
-
-        <ul id="taskList" class="mt-4">
-            <!-- Tasks will be dynamically added here -->
-            {% for item in items %}
-            <li class="py-2 flex items-center"><input type="checkbox" class="mr-2" {% if item["done"] == true %}checked{% endif %}><span>{{ item["text"] }}</span><button id={{ item["id"] }} onclick="removeTask(this)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">❌</button></li>
-            {% endfor %}
-        </ul>
+    <div class="flex items-center border-b border-gray-300 py-2">
+        <input id="taskInput" type="text" placeholder="Enter a new task"
+            class="w-full outline-none px-2 py-1 rounded-l">
+        <button onclick="addTask()" class="bg-blue-500 text-white px-4 py-1 rounded">Add</button>
     </div>
-    <script src="{{url_for('static', filename='script.js')}}"></script>
 
+    <ul id="taskList" class="mt-4">
+        <!-- Tasks will be dynamically added here -->
+        {% for item in items %}
+        <li class="py-2 flex items-center"><input type="checkbox" class="mr-2" {% if item["done"] == true %}checked{% endif %}><span>{{ item["text"] }}</span><button id={{ item["id"] }} onclick="removeTask(this)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">❌</button></li>
+        {% endfor %}
+    </ul>
+</div>
+<script src="{{url_for('static', filename='script.js')}}"></script>
 {% endblock %}
 
