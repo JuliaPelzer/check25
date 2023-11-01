@@ -169,7 +169,6 @@ cython_debug/
 .vscode
 .DS_Store
 .parcel-cache
-index.html
 yarn-error.log
 types/generated/*.d.ts
 
