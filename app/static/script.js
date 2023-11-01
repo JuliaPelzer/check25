@@ -11,22 +11,28 @@ async function addTask() {
     let body = await response.json();
 
     const taskItem = document.createElement("li");
-    taskItem.className = "py-2 flex items-center";
+    taskItem.className = "py-2 flex items-center justify-between";
+
+    const taskWrapper = document.createElement("div");
+    taskItem.appendChild(taskWrapper);
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "mr-2";
-    taskItem.appendChild(checkbox);
+    taskWrapper.appendChild(checkbox);
 
     const taskTextElement = document.createElement("span");
     taskTextElement.textContent = taskText;
-    taskItem.appendChild(taskTextElement);
+    taskWrapper.appendChild(taskTextElement);
 
     const deleteButton = document.createElement("button");
     deleteButton.id = body["id"];
-    deleteButton.textContent = "❌";
-    deleteButton.className = "ml-2 bg-red-500 text-white px-2 py-1 rounded";
+    deleteButton.className = "px-2 py-1 rounded";
     deleteButton.onclick = removeTask;
+
+    const icon = document.createElement("i");
+    icon.className = "fa-solid fa-trash";
+    deleteButton.appendChild(icon);
     taskItem.appendChild(deleteButton);
 
     taskList.appendChild(taskItem);
