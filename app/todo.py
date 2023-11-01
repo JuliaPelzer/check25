@@ -8,12 +8,14 @@ from app.db import get_db
 bp = Blueprint('todo', __name__)
 
 @bp.route('/')
+@login_required
 def index():
     db = get_db()
     items = db.execute("SELECT * FROM task WHERE user_id == ?", "1").fetchall()
     return render_template('todo/index.html', items=items)
 
 @bp.route('/add', methods = ["POST"])
+@login_required
 def add():
     db = get_db()
     done = request.args["done"]
