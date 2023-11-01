@@ -17,18 +17,20 @@
         <ul id="taskList" class="mt-4">
             <!-- Tasks will be dynamically added here -->
             {% for item in items %}
-            <li class="py-2 flex items-center"><input type="checkbox" class="mr-2" {% if item["done"] == true %}checked{% endif %}><span>{{ item["text"] }}</span><button onclick="removeTask(this)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">❌</button></li>
+            <li class="py-2 flex items-center"><input type="checkbox" class="mr-2" {% if item["done"] == true %}checked{% endif %}><span>{{ item["text"] }}</span><button id={{ item["id"] }} onclick="removeTask(this)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">❌</button></li>
             {% endfor %}
         </ul>
     </div>
     <script>
-        function addTask() {
+        async function addTask() {
             const taskInput = document.getElementById('taskInput');
             const taskList = document.getElementById('taskList');
 
             const taskText = taskInput.value;
             if (taskText.trim() !== '') {
-                fetch("http://127.0.0.1:5000/add?done=false&text=" + taskText, { method: "POST" });
+                // TODO fix link
+                let response = await fetch("http://127.0.0.1:5000/add?done=false&text=" + taskText, { method: "POST" });
+                let body = await response.json();
 
                 const taskItem = document.createElement('li');
                 taskItem.className = 'py-2 flex items-center';
@@ -43,11 +45,10 @@
                 taskItem.appendChild(taskTextElement);
 
                 const deleteButton = document.createElement('button');
+                deleteButton.id = body["id"]
                 deleteButton.textContent = '❌';
                 deleteButton.className = 'ml-2 bg-red-500 text-white px-2 py-1 rounded';
-                deleteButton.onclick = function() {
-                    taskList.removeChild(taskItem);
-                };
+                deleteButton.onclick = removeTask;
                 taskItem.appendChild(deleteButton);
 
                 taskList.appendChild(taskItem);
@@ -55,7 +56,11 @@
             }
         }
         function removeTask(param) {
-            param.parentNode.remove()
+            // TODO fix link
+            let id = this.id ? this.id : param.id;
+            let obj = this.id ? this : param;
+            fetch("http://127.0.0.1:5000/delete?id=" + id, { method: "DELETE" });
+            obj.parentNode.remove()
         }
     </script>
 
