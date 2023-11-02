@@ -1,3 +1,10 @@
+let input = document.getElementById("taskInput");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    addTask();
+  }
+})
+
 async function addTask() {
   const taskInput = document.getElementById("taskInput");
   const taskList = document.getElementById("taskList");
