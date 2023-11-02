@@ -13,14 +13,14 @@
     <ul id="taskList" class="mt-4">
         <!-- Tasks will be dynamically added here -->
         {% for item in items %}
-        <li class="py-2 flex items-center justify-between">
+        <li class="py-2 flex items-center justify-between" id={{ item["id"] }}>
             <div>
                 <input type="checkbox" class="mr-2" {% if item["done"] == true %}checked{% endif %}>
                 <span>
                     {{ item["text"] }}
                 </span>
             </div>
-            <button id={{ item["id"] }} onclick="removeTask(this)" class="px-2 py-1 rounded">
+            <button class="px-2 py-1 rounded">
                 <i class="fa-solid fa-trash"></i>
             </button>
         </li>
