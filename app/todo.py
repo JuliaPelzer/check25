@@ -52,3 +52,29 @@ def delete():
     db.commit()
 
     return {"status": "Task Deleted"}
+
+
+@bp.route("/modify", methods=["MODIFY"])
+@login_required
+def modify():
+    db = get_db()
+    id = request.args["id"]
+    done = request.args["done"]
+    user_id = session.get("user_id")
+    task_owner = db.execute("SELECT user_id FROM task WHERE id == ?", (id,)).fetchone()[
+        "user_id"
+    ]
+
+    if task_owner != user_id:
+        return {"status": "Task not found"}
+
+    db.execute(
+        "UPDATE task SET done=? WHERE id=?",
+        (
+            done,
+            id,
+        ),
+    )
+    db.commit()
+
+    return {"status": "Task Modified"}

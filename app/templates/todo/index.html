@@ -15,7 +15,7 @@
         {% for item in items %}
         <li class="py-2 flex items-center justify-between" id={{ item["id"] }}>
             <div>
-                <input type="checkbox" class="mr-2" {% if item["done"] == true %}checked{% endif %}>
+                <input type="checkbox" class="mr-2" {% if item["done"] == 'true' %}checked{% endif %}>
                 <span>
                     {{ item["text"] }}
                 </span>
