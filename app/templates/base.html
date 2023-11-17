@@ -1,48 +1,50 @@
 <!DOCTYPE html>
-<html lang="en"></html>
+<html lang="en">
+
+</html>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ToDo</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  <script src="https://kit.fontawesome.com/<placeholder>.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/25c9ecd121.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="md:bg-gray-50">
   <div class="bg-white max-w-screen-md md:shadow-md mx-auto rounded-md">
-  <nav
-    class="justify-between max-w-screen-md flex flex-wrap md:rounded-md md:mt-8"
-  >
-    <h1 class="font-extrabold text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">ToDo</h1>
-    <ul class="flex space-x-4 p-4 pr-8 self-center sm:m-0 m-auto">
-      {% if g.user %}
-      <li class="border-2 rounded-lg p-2 shadow">
-        <span>
-          {{ g.user['username'] }}
-        </span>
-      </li>
-      <a href="{{ url_for('auth.logout') }}">
-        <li class="border-2 rounded-lg p-2 shadow font-bold">
-          Log Out
+    <nav class="justify-between max-w-screen-md flex flex-wrap md:rounded-md md:mt-8">
+      <h1 class="font-extrabold text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">ToDo</h1>
+      <ul class="flex space-x-4 p-4 pr-8 self-center sm:m-0 m-auto">
+        {% if g.user %}
+        <li class="border-2 rounded-lg p-2 shadow">
+          <span>
+            {{ g.user['username'] }}
+          </span>
         </li>
-      </a>
-      {% else %}
-      <a href="{{ url_for('auth.login') }}">
-        <li class="border-2 rounded-lg p-2 shadow font-bold">
-          Log In
-        </li>
-      </a>
-      <a href="{{ url_for('auth.register') }}">
-        <li class="border-2 rounded-lg p-2 shadow font-bold">
-          Register
-        </li>
-      </a>
-      {% endif %}
-    </ul>
-  </nav>
-  <section class="max-w-screen-md mx-auto pt-8 pb-8">
-    {% for message in get_flashed_messages() %}
-    <div class="text-center">{{ message }}</div>
-    {% endfor %} {% block content %}{% endblock %}
-  </section>
+        <a href="{{ url_for('auth.logout') }}">
+          <li class="border-2 rounded-lg p-2 shadow font-bold">
+            Log Out
+          </li>
+        </a>
+        {% else %}
+        <a href="{{ url_for('auth.login') }}">
+          <li class="border-2 rounded-lg p-2 shadow font-bold">
+            Log In
+          </li>
+        </a>
+        <a href="{{ url_for('auth.register') }}">
+          <li class="border-2 rounded-lg p-2 shadow font-bold">
+            Register
+          </li>
+        </a>
+        {% endif %}
+      </ul>
+    </nav>
+    <section class="max-w-screen-md mx-auto pt-8 pb-8">
+      {% for message in get_flashed_messages() %}
+      <div class="text-center">{{ message }}</div>
+      {% endfor %} {% block content %}{% endblock %}
+    </section>
   </div>
 </body>
