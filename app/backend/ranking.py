@@ -25,7 +25,7 @@ def dist(
     lon_providers : pd.DataFrame
         Longitudes of the providers
     """
-    R = 6371000  # radius of the earth in m
+    R = 6371  # radius of the earth in m
     # adapted from http://janmatuschek.de/LatitudeLongitudeBoundingCoordinates
     return (
         np.arccos(
@@ -83,8 +83,11 @@ class ProviderRanker:
         distances = dist(
             data["lat"], data["lon"], self.providers["lat"], self.providers["lon"]
         )
+
+        # max_driving_distance is in meters, everything else in km
         max_distance_mask = (
-            distances < self.providers["max_driving_distance"] + driving_distance_bonus
+            distances
+            < self.providers["max_driving_distance"] / 1000 + driving_distance_bonus
         )
         default_distance = 80
         distance_scores = 1 - (
@@ -98,8 +101,13 @@ class ProviderRanker:
             + (1 - distance_weight) * self.profile_scores[max_distance_mask]
         )
         candidates = self.providers[max_distance_mask]
-        candidates["rank"] = ranks
-        return candidates.sort_values(by="rank", ascending=False)
+        candidates["rankingScore"] = ranks
+        candidates.rename(columns={"profile_id": "id"}, inplace=True)
+        candidates["name"] = candidates["first_name"] + " " + candidates["last_name"]
+
+        return candidates.sort_values(by="rankingScore", ascending=False)[
+            ["id", "name", "rankingScore"]
+        ]
 
 
 if __name__ == "__main__":
