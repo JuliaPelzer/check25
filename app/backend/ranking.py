@@ -74,6 +74,22 @@ class ProviderRanker:
             + 0.6 * self.providers["profile_description_score"]
         )
 
+    def get_Patch_Response(self, craftsman_id: int) -> dict:
+        return dict(
+            id=craftsman_id,
+            updated=dict(
+                maxDrivingDistance=self.providers.at[
+                    craftsman_id, "max_driving_distance"
+                ],
+                profilePictureScore=self.providers.at[
+                    craftsman_id, "profile_picture_score"
+                ],
+                profileDescriptionScore=self.providers.at[
+                    craftsman_id, "profile_description_score"
+                ],
+            ),
+        )
+
     def __update_local(
         self,
         craftsman_id: int,
