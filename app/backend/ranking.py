@@ -100,7 +100,7 @@ class ProviderRanker:
             distance_weight * distance_scores
             + (1 - distance_weight) * self.profile_scores[max_distance_mask]
         )
-        candidates = self.providers[max_distance_mask]
+        candidates = self.providers[max_distance_mask].copy()
         candidates["rankingScore"] = ranks
         candidates.rename(columns={"profile_id": "id"}, inplace=True)
         candidates["name"] = candidates["first_name"] + " " + candidates["last_name"]
