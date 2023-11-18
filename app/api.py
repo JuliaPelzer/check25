@@ -3,6 +3,7 @@ from flask import (
     request,
 )
 from app import provider_ranker
+from app.backend.interfaces import Response
 
 bp = Blueprint("api", __name__)
 
@@ -11,7 +12,8 @@ bp = Blueprint("api", __name__)
 def craftsmen():
     postalcode = request.args["postalcode"]
     print("test")
-    result = provider_ranker.rank(postalcode)
+    result_df = provider_ranker.rank(postalcode)
+    result = Response.from_df(result_df).to_json()
 
     return str(result)
 
