@@ -52,7 +52,7 @@ class ProviderRanker:
         db_path: os.PathLike,
     ):
         self.db_path = db_path
-        self.db = sqlite3.connect(self.db_path)
+        self.db = sqlite3.connect(self.db_path, check_same_thread=False)
         self.__load_data()
         self.cache = Cache(128, self.postcodes)
 
@@ -78,15 +78,15 @@ class ProviderRanker:
         return dict(
             id=craftsman_id,
             updated=dict(
-                maxDrivingDistance=self.providers.at[
+                maxDrivingDistance=int(self.providers.at[
                     craftsman_id, "max_driving_distance"
-                ],
-                profilePictureScore=self.providers.at[
+                ]),
+                profilePictureScore=int(self.providers.at[
                     craftsman_id, "profile_picture_score"
-                ],
-                profileDescriptionScore=self.providers.at[
+                ]),
+                profileDescriptionScore=int(self.providers.at[
                     craftsman_id, "profile_description_score"
-                ],
+                ]),
             ),
         )
 
