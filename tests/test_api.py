@@ -31,5 +31,4 @@ def runner(app):
 # Checks the id of number one result craftsman
 def test_json_data(client):
     response = client.get("/craftsmen?postalcode=85375")
-    json_resp = json.loads(response.data)
-    assert json_resp["craftsmen"][0]["id"] == 10642
+    assert response.json["craftsmen"][0]["id"] == 10642
