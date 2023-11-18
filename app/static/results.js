@@ -2,13 +2,16 @@ async function make_interactive() {
   let postalcode = new URLSearchParams(window.location.search).get("postalcode");
 
   let response = await fetch("/craftsmen?postalcode=" + postalcode);
-  
+
   let data = await response.json();
   let craftsmen = data["craftsmen"];
 
   let provider_list = document.getElementById("provider_list");
   const template = document.querySelector("#provider");
-  
+
+  let numba = document.getElementById("numba");
+  numba.textContent = "Yeahy, we found " + craftsmen.length + " craftmen in your area!"
+
   for (let i = 0; i < craftsmen.length && i < 20; i++) {
     const clone = template.content.cloneNode(true);
     let name = clone.querySelector("h3");
