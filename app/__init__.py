@@ -1,6 +1,12 @@
 import os
 
-from flask import Flask
+from flask import Flask, g
+
+from app.backend.ranking import ProviderRanker
+import pathlib
+
+db_path = pathlib.Path("app/backend/data/db.sqlite")
+provider_ranker = ProviderRanker(db_path)
 
 
 def create_app(test_config=None):
@@ -10,7 +16,6 @@ def create_app(test_config=None):
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "app.sqlite"),
     )
-
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile("config.py", silent=True)
@@ -29,17 +34,21 @@ def create_app(test_config=None):
     def hello():
         return "Hello, World!"
 
-    from . import db
+    from app import db
 
     db.init_app(app)
 
-    from . import auth
+    from app import auth
 
     app.register_blueprint(auth.bp)
 
-    # from . import todo
+    # from app import todo
 
     # app.register_blueprint(todo.bp)
     # app.add_url_rule("/", endpoint="index")
+
+    from app import api
+
+    app.register_blueprint(api.bp)
 
     return app
