@@ -9,7 +9,7 @@ async function make_interactive() {
   let provider_list = document.getElementById("provider_list");
   const template = document.querySelector("#provider");
   
-  for (let i = 0; i < craftsmen.length; i++) {
+  for (let i = 0; i < craftsmen.length && i < 20; i++) {
     const clone = template.content.cloneNode(true);
     let name = clone.querySelector("h3");
     console.log(name)
