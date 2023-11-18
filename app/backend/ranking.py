@@ -1,8 +1,9 @@
 import json
-import pandas as pd
-import numpy as np
-import pathlib
 import os
+import pathlib
+
+import numpy as np
+import pandas as pd
 
 
 def dist(
@@ -56,12 +57,15 @@ class ProviderRanker:
         self.postcodes_json = postcodes_json
         self.qualities_json = qualities_json
         self.__load_data()
+        self.cache = Cache(128, self.postcodes)
 
     def __load_data(self) -> None:
-        self.postcodes = pd.read_json(self.postcodes_json, encoding='utf-8', dtype={'postcode': 'str'})
-        self.providers = pd.read_json(self.provider_json, encoding='utf-8')
-        self.qualities = pd.read_json(self.qualities_json, encoding='utf-8')
-    
+        self.postcodes = pd.read_json(
+            self.postcodes_json, encoding="utf-8", dtype={"postcode": "str"}
+        )
+        self.providers = pd.read_json(self.provider_json, encoding="utf-8")
+        self.qualities = pd.read_json(self.qualities_json, encoding="utf-8")
+
         # TODO update this on catch
         self.providers.rename(columns={"id": "profile_id"}, inplace=True)
         self.providers = pd.merge(self.providers, self.qualities, on="profile_id")
@@ -72,6 +76,10 @@ class ProviderRanker:
 
     def ranking_indices(self, postcode):
         # TODO document
+        result = self.cache[postcode]
+        if result is not None:
+            return result
+
         data = self.postcodes[self.postcodes["postcode"] == postcode].iloc[0]
         driving_distance_bonus = 0
         if data["postcode_extension_distance_group"] == "group_b":
@@ -103,9 +111,49 @@ class ProviderRanker:
         candidates.rename(columns={"profile_id": "id"}, inplace=True)
         candidates["name"] = candidates["first_name"] + " " + candidates["last_name"]
 
-        return candidates.sort_values(by="rankingScore", ascending=False)[
+        result = candidates.sort_values(by="rankingScore", ascending=False)[
             ["id", "name", "rankingScore"]
         ]
+
+        self.cache.insert(postcode, result)
+        return result
+
+
+class Cache:
+    def __init__(self, max_size: int, postcodes: pd.DataFrame):
+        self.max_size = max_size
+        self.postcodes = postcodes
+        # each entry in cache is another dict consisting of frequency and
+        # result
+        self.cache = {}
+
+    def __getitem__(self, postcode):
+        if postcode in self.cache:
+            self.cache[postcode]["frequency"] += 1
+            return self.cache[postcode]["result"]
+        else:
+            return None
+
+    def _find_least_frequent_postcode(self):
+        min_frequency = float("inf")
+        min_postcode = None
+        for postcode in self.cache:
+            if self.cache[postcode]["frequency"] < min_frequency:
+                min_frequency = self.cache[postcode]["frequency"]
+                min_postcode = postcode
+        return min_postcode
+
+    def _remove_postcode(self, postcode):
+        del self.cache[postcode]
+
+    def insert(self, postcode, result):
+        if len(self.cache) == self.max_size:
+            postcode_to_remove = self._find_least_frequent_postcode()
+            self._remove_postcode(postcode_to_remove)
+        self.cache[postcode] = {"result": result, "frequency": 1}
+
+    def on_update(self):
+        self.cache = {}
 
 
 if __name__ == "__main__":
