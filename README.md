@@ -41,3 +41,9 @@ pre-commit
 pip install pre-commit
 pre-commit install
 ```
+
+setup check24 database
+
+```
+python app/backend/setup_db.py
+```

@@ -1,6 +1,7 @@
 import json
 import os
 import pathlib
+import sqlite3
 
 import numpy as np
 import pandas as pd
@@ -40,33 +41,31 @@ def dist(
 
 
 class ProviderRanker:
-    provider_json: os.PathLike
-    postcodes_json: os.PathLike
-    qualities_json: os.PathLike
-    providers: pd.DataFrame
+    db_path: os.PathLike
+    db: sqlite3.Connection
     postcodes: pd.DataFrame
+    providers: pd.DataFrame
+    qualities: pd.DataFrame
 
     # TODO better name
     def __init__(
         self,
-        provider_json: os.PathLike,
-        postcodes_json: os.PathLike,
-        qualities_json: os.PathLike,
+        db_path: os.PathLike,
     ):
-        self.provider_json = provider_json
-        self.postcodes_json = postcodes_json
-        self.qualities_json = qualities_json
+        self.db_path = db_path
+        self.db = sqlite3.connect(self.db_path)
         self.__load_data()
         self.cache = Cache(128, self.postcodes)
 
     def __load_data(self) -> None:
-        self.postcodes = pd.read_json(
-            self.postcodes_json, encoding="utf-8", dtype={"postcode": "str"}
+        self.postcodes = pd.read_sql_query("SELECT * FROM postcode", self.db)
+        self.providers = pd.read_sql_query(
+            "SELECT * FROM service_provider_profile", self.db
         )
-        self.providers = pd.read_json(self.provider_json, encoding="utf-8")
-        self.qualities = pd.read_json(self.qualities_json, encoding="utf-8")
-
-        # TODO update this on catch
+        self.qualities = pd.read_sql_query(
+            "SELECT * FROM quality_factor_score", self.db
+        )
+        # TODO update this on patch
         self.providers.rename(columns={"id": "profile_id"}, inplace=True)
         self.providers = pd.merge(self.providers, self.qualities, on="profile_id")
         self.profile_scores = (
@@ -74,7 +73,7 @@ class ProviderRanker:
             + 0.6 * self.providers["profile_description_score"]
         )
 
-    def ranking_indices(self, postcode):
+    def rank(self, postcode: str) -> pd.DataFrame:
         # TODO document
         result = self.cache[postcode]
         if result is not None:
@@ -157,11 +156,7 @@ class Cache:
 
 
 if __name__ == "__main__":
-    data_dir = pathlib.Path("app/backend/data")
-    ranker = ProviderRanker(
-        data_dir / "service_provider_profile.json",
-        data_dir / "postcode.json",
-        data_dir / "quality_factor_score.json",
-    )
-    results = ranker.ranking_indices("85375")
+    db_path = pathlib.Path("app/backend/data/db.sqlite")
+    ranker = ProviderRanker(db_path)
+    results = ranker.rank("85375")
     print(results.iloc[:20])

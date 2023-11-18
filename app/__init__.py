@@ -2,6 +2,12 @@ import os
 
 from flask import Flask, g
 
+from app.backend.ranking import ProviderRanker
+import pathlib
+
+db_path = pathlib.Path("app/backend/data/db.sqlite")
+provider_ranker = ProviderRanker(db_path)
+
 
 def create_app(test_config=None):
     # create and configure the app
