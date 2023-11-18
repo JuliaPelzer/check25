@@ -1,5 +1,6 @@
 import pathlib
 import sqlite3
+
 import pandas as pd
 
 if __name__ == "__main__":
@@ -15,7 +16,7 @@ if __name__ == "__main__":
     postcodes = pathlib.Path("app/backend/data/postcode.json")
     providers = pathlib.Path("app/backend/data/service_provider_profile.json")
     qualities = pathlib.Path("app/backend/data/quality_factor_score.json")
-    pd.read_json(postcodes).to_sql(
+    pd.read_json(postcodes, dtype={"postcode": "str"}).to_sql(
         "postcode", conn, schema=sql, if_exists="append", index=False
     )
     pd.read_json(providers).to_sql(
