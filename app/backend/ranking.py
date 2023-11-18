@@ -1,6 +1,8 @@
 import os
 import pathlib
 import sqlite3
+from collections import deque
+from functools import lru_cache
 
 import numpy as np
 import pandas as pd
@@ -75,6 +77,7 @@ class ProviderRanker:
             + 0.6 * self.providers["profile_description_score"]
         )
 
+    @lru_cache(maxsize=128)
     def rank(self, postcode: str) -> pd.DataFrame:
         # TODO document
         result = self.cache[postcode]
@@ -127,13 +130,15 @@ class Cache:
         self.cache = {}
 
     def __getitem__(self, postcode):
-        if postcode in self.cache:
-            self.cache[postcode]["frequency"] += 1
-            return self.cache[postcode]["result"]
-        else:
+        # self.read_count += 1
+        if postcode not in self.cache:
             return None
 
+        self.cache[postcode]["frequency"] += 1
+        return self.cache[postcode]["result"]
+
     def _find_least_frequent_postcode(self):
+
         min_frequency = float("inf")
         min_postcode = None
         for postcode in self.cache:
