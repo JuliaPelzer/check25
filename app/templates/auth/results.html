@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<script src="{{ url_for('static', filename='results.js')}}"> </script>
 <section>
     <div>
         <div>
@@ -20,106 +21,8 @@
 
 <div class="bg-gradient-to-b from-white to-gray-200 pb-5">
     <section>
-        <ul>
-            <div class="border-solid bg-gray-300 text-blue-950 rounded-xl m-5 p-5">
-                <div class="sm:flex">
-                    <div class="flex-1 p-3 ml-5">
-                        <img src="{{ url_for('static', filename='example.png') }}" alt="Pic of Craftman"
-                            class="object-none w-40 h-40 rounded-full">
-                    </div>
-                    <div class="flex-1 p-3">
-                        <h3 class="font-bold">Vorname Nachname</h3>
-                        <div>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            (3.0)
-                        </div>
+        <ul id="provider_list">
 
-                        <div class="flex">
-                            <div class="flex-1">
-                                <span class="fa fa-map-marker"></span>
-                                <span>Distance: 5km </span>
-                            </div>
-                            <div class="flex-1">
-                                <span class="fa fa-calendar"></span>
-                                <span>Bookings: 5 </span>
-                            </div>
-                        </div>
-                        <div class="border-separate bg-white rounded-md mt-5 p-5">
-                            <a href="/craftmen/provider1">View Profile</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border-solid bg-gray-300 text-blue-950 rounded-xl m-5 p-5">
-                <div class="flex">
-                    <div class="flex-1 p-3 ml-5">
-                        <img src="{{ url_for('static', filename='example.png') }}" alt="Pic of Craftman"
-                            class="object-none w-40 h-40 rounded-full">
-                    </div>
-                    <div class="flex-1 p-3">
-                        <h3 class="font-bold">Vorname Nachname</h3>
-                        <div>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            (3.0)
-                        </div>
-
-                        <div class="flex">
-                            <div class="flex-1">
-                                <span class="fa fa-map-marker"></span>
-                                <span>Distance: 5km </span>
-                            </div>
-                            <div class="flex-1">
-                                <span class="fa fa-calendar"></span>
-                                <span>Bookings: 5 </span>
-                            </div>
-                        </div>
-                        <div class="border-separate bg-white rounded-md mt-5 p-5">
-                            <a href="/craftmen/provider1">View Profile</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border-solid bg-gray-300 text-blue-950 rounded-xl m-5 p-5">
-                <div class="flex">
-                    <div class="flex-1 p-3 ml-5">
-                        <img src="{{ url_for('static', filename='example.png') }}" alt="Pic of Craftman"
-                            class="object-none w-40 h-40 rounded-full">
-                    </div>
-                    <div class="flex-1 p-3">
-                        <h3 class="font-bold">Vorname Nachname</h3>
-                        <div>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            (3.0)
-                        </div>
-
-                        <div class="flex">
-                            <div class="flex-1">
-                                <span class="fa fa-map-marker"></span>
-                                <span>Distance: 5km </span>
-                            </div>
-                            <div class="flex-1">
-                                <span class="fa fa-calendar"></span>
-                                <span>Bookings: 5 </span>
-                            </div>
-                        </div>
-                        <div class="border-separate bg-white rounded-md mt-5 p-5">
-                            <a href="/craftmen/provider1">View Profile</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </ul>
 
         <div class="border-solid bg-blue-950 text-white text-center rounded-xl m-5 p-2">
@@ -127,4 +30,40 @@
         </div>
     </section>
 </div>
+
+<template id="provider">
+    <div class="border-solid bg-gray-300 text-blue-950 rounded-xl m-5 p-5">
+        <div class="sm:flex">
+            <div class="flex-1 p-3 ml-5">
+                <img src="{{ url_for('static', filename='example.png') }}" alt="Pic of Craftman"
+                    class="object-none w-40 h-40 rounded-full">
+            </div>
+            <div class="flex-1 p-3">
+                <h3 class="font-bold">Vorname Nachname</h3>
+                <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    (3.0)
+                </div>
+
+                <div class="flex">
+                    <div class="flex-1">
+                        <span class="fa fa-map-marker"></span>
+                        <span>Distance: 5km </span>
+                    </div>
+                    <div class="flex-1">
+                        <span class="fa fa-calendar"></span>
+                        <span>Bookings: 5 </span>
+                    </div>
+                </div>
+                <div class="border-separate bg-white rounded-md mt-5 p-5">
+                    <a href="/craftmen/provider1">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 {% endblock %}
