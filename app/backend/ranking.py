@@ -28,7 +28,7 @@ def dist(
     lon_providers : pd.DataFrame
         Longitudes of the providers
     """
-    R = 6371  # radius of the earth in m
+    R = 6371  # radius of the earth in km
     # adapted from http://janmatuschek.de/LatitudeLongitudeBoundingCoordinates
     return (
         np.arccos(
@@ -53,20 +53,31 @@ class ProviderRanker:
         self,
         db_path: os.PathLike,
     ):
+        # utilize a database for persistent memory, since it is better to
+        # update than to write a new json file at every update.
+        # For the efficiency of the ranking, the data is loaded into memory.
         self.db_path = db_path
         self.db = sqlite3.connect(self.db_path)
+
         self.__load_data()
 
     def __load_data(self) -> None:
+        """Loads postcodes, providers and qualities from the database into
+        memory.
+        """
+
+        # create postcodes dataframe
         self.postcodes = pd.read_sql_query("SELECT * FROM postcode", self.db)
         self.postcodes.set_index("postcode", inplace=True)
         self.providers = pd.read_sql_query(
             "SELECT * FROM service_provider_profile", self.db
         )
+        # create providers dataframe
         self.providers.set_index("id", inplace=True)
         self.qualities = pd.read_sql_query(
             "SELECT * FROM quality_factor_score", self.db
         )
+        # create qualities dataframe and precompute profile_scores
         self.qualities.rename(columns={"profile_id": "id"}, inplace=True)
         self.qualities.set_index("id", inplace=True)
         self.providers = pd.merge(self.providers, self.qualities, on="id")
@@ -98,6 +109,14 @@ class ProviderRanker:
         profile_description_score: float = None,
         max_driving_distance: float = None,
     ) -> None:
+        """Update a providers dataframe entry for a given craftsman_id.
+
+        Args:
+            craftsman_id (int)
+            profile_picture_score (float, optional): Defaults to None.
+            profile_description_score (float, optional): Defaults to None.
+            max_driving_distance (float, optional): Defaults to None.
+        """
         if max_driving_distance is not None:
             self.providers.at[
                 craftsman_id, "max_driving_distance"
@@ -110,6 +129,8 @@ class ProviderRanker:
             self.providers.at[
                 craftsman_id, "profile_picture_score"
             ] = profile_picture_score
+
+        # recompute profile_description_score
         if profile_description_score is not None or profile_picture_score is not None:
             self.profile_scores.at[craftsman_id] = (
                 0.4 * self.providers.at[craftsman_id, "profile_picture_score"]
@@ -123,6 +144,14 @@ class ProviderRanker:
         profile_description_score: float = None,
         max_driving_distance: float = None,
     ) -> None:
+        """Update entry in service_provider_profile with craftsman_id.
+
+        Args:
+            craftsman_id (int)
+            profile_picture_score (float, optional): Defaults to None.
+            profile_description_score (float, optional): Defaults to None.
+            max_driving_distance (float, optional): Defaults to None.
+        """
         if max_driving_distance is not None:
             self.db.execute(
                 "UPDATE service_provider_profile SET max_driving_distance = ? WHERE id = ?",
@@ -147,6 +176,14 @@ class ProviderRanker:
         profile_description_score: float = None,
         max_driving_distance: float = None,
     ) -> None:
+        """Update caftsman entry both in database and dataframe.
+
+        Args:
+            craftsman_id (int)
+            profile_picture_score (float, optional): Defaults to None.
+            profile_description_score (float, optional): Defaults to None.
+            max_driving_distance (float, optional): Defaults to None.
+        """
         self.__update_local(
             craftsman_id,
             profile_picture_score,
@@ -163,14 +200,27 @@ class ProviderRanker:
 
     @lru_cache(maxsize=128)
     def rank(self, postcode: str) -> pd.DataFrame:
+        """Calculates rank for all craftsmen who are in reach of a given
+        postcode and returns them as a dataframe in ascending order.
+
+        Args:
+            postcode (str): client postcode
+
+        Returns:
+            pd.DataFrame: all craftsmen in reach of the postcode, sorted by
+            rank in ascending order.
+        """
         # TODO document
 
+        # load row from postcode table for which to calculate the ranking
         data = self.postcodes.loc[postcode]
         driving_distance_bonus = 0
         if data["postcode_extension_distance_group"] == "group_b":
             driving_distance_bonus = 2
         elif data["postcode_extension_distance_group"] == "group_c":
             driving_distance_bonus = 5
+
+        # calculate distance between postcode and all providers
         distances = dist(
             data["lat"], data["lon"], self.providers["lat"], self.providers["lon"]
         )
@@ -181,6 +231,9 @@ class ProviderRanker:
             < self.providers["max_driving_distance"] / 1000 + driving_distance_bonus
         )
         default_distance = 80
+
+        # only calculate ranks for providers that are in range (i.e. have a
+        # True max_distance_mask value)
         distance_scores = 1 - (
             distances[max_distance_mask] / (default_distance + driving_distance_bonus)
         )
@@ -191,6 +244,8 @@ class ProviderRanker:
             distance_weight * distance_scores
             + (1 - distance_weight) * self.profile_scores[max_distance_mask]
         )
+
+        # to avoid SettingWithCopyWarning explicitly copy the relevant columns
         candidates = self.providers[max_distance_mask].copy()
         candidates["rankingScore"] = ranks
         candidates["name"] = candidates["first_name"] + " " + candidates["last_name"]
