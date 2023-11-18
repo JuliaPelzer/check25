@@ -14,10 +14,10 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.db import get_db
 
-bp = Blueprint("auth", __name__, url_prefix="/auth")
+bp = Blueprint("auth", __name__)
 
 
-@bp.route("/search", methods=("GET", "POST"))
+@bp.route("/", methods=("GET", "POST"))
 def search():
     if request.method == "POST":
         postcode = request.form["postcode"]
@@ -26,11 +26,18 @@ def search():
 
         if error is None:
             # TODO call stuff
-            pass
+            return render_template("auth/results.html")
+
 
         flash(error)
 
     return render_template("auth/search.html")
+
+
+
+@bp.route("/details", methods=("GET", "POST"))
+def details():
+    return render_template("auth/details.html")
 
 
 # @bp.before_app_request

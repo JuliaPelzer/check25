@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section">
+    <div class="section__content">
+        <div class="section__content">
+            <h1>X craftmen found in your region</h1>
+            <div class="headline-divider">
+                <div class="headline-divider__container">
+                    <div class="headline-divider__line"></div>
+                    <div class="headline-divider__line"></div>
+                </div>
+            </div>
+                <div class="carousel-container__tiles carousel-container__tiles--wrap">
+                    <div class="decisionbox">
+                        <a class="button button--primary" href="/">Anfrage stornieren</a>
+                    </div>
+                    <div class="decisionbox">
+                        <a class="button button--primary" href="/details">Details anzeigen</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <ul>
+        <div class="provider">
+            <a href="/craftsmen/providerXY">
+                <!-- <div class="tile-container__image-container">
+                        <img loading="lazy" alt="Maler und Tapezierer" class="tile-container__image"
+                            src="https://assets.handwerk.check24.de/build/cs-landingpage/images/LandingPage/Service/Icons/Craftsmen/paint-brush-icon.svg">
+                    </div> -->
+                <span class="tile-container__text">Provider No. 1</span>
+            </a>
+        </div>
+        <div class="provider">
+            <a href="/craftsmen/providerXY">
+                <span class="tile-container__text">Provider No. 2</span>
+            </a>
+        </div>
+        <div class="provider">
+            <a href="/craftsmen/providerXY">
+                <span class="tile-container__text">Provider No. 3</span>
+            </a>
+        </div>
+    </ul>
+</section>
+
+{% endblock %}

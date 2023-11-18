@@ -4,26 +4,167 @@
 </html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search for Craftmen</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  <script src="https://kit.fontawesome.com/25c9ecd121.js" crossorigin="anonymous"></script>
+    <title>Search for Craftmen | CHECK25 Profis
+    </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="https://kit.fontawesome.com/25c9ecd121.js" crossorigin="anonymous"></script>
+    <style>
+        .provider {
+            background-color: white;
+            color: #063773;
+            border: 2px solid #063773;
+            border-radius: 15px;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+    <style>
+        .decisionbox {
+            background-color: white;
+            color: rgb(82, 84, 87);
+            border-radius: 5px;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+
+    <meta name="Language" content="de">
+    <meta name="Keywords" content="">
+    <meta name="Publisher" content="CHECK24, München">
+    <meta name="Copyright" content="CHECK24, München">
+    <meta name="Page-topic" content="">
+    <meta name="Robots" content="index, follow">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.check24.de/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.check24.de/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.check24.de/favicon-16x16.png">
+    <link rel="mask-icon" href="https://www.check24.de/safari-pinned-tab.svg" color="#063773">
+    <link rel="shortcut icon" href="https://www.check24.de/favicon.ico">
+    <meta name="msapplication-TileColor" content="#063773">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="c24-wf-version" content="2023-1-23">
+    <style>
+        body,
+        .c24-body {
+            background-color: #FAFAFA;
+            margin: 0;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            color: #575757;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        #c24-content * {
+            box-sizing: border-box;
+        }
+    </style>
+
+    <link rel="stylesheet"
+        href="https://assets.handwerk.check24.de/build/cs-landingpage/lp-category-desktop-theme.5d6d818d.css"
+        media="screen">
+    <style>
+        html {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        .c-WireframeContact {
+            color: #575757;
+            font-size: 12px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            line-height: 14px;
+            padding: 0;
+        }
+
+        .c-WireframeContact-title {
+            font-weight: bold;
+            font-size: 14px;
+            padding-bottom: 10px;
+            text-align: left;
+        }
+
+        .c-WireframeContact-phoneNumber {
+            color: #575757;
+            font-weight: normal;
+            padding-bottom: 5px;
+        }
+
+        .c-WireframeContact-openingTime {
+            padding-bottom: 20px;
+        }
+
+        .c-WireframeContact-mailInfoText {
+            padding-bottom: 5px;
+        }
+
+        .c-WireframeContact-mail {
+            color: #575757;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css"
+        href="https://wireframe.check24.de/2023-1-23/assets/desktop/wireframe.min.css" media="screen">
+    <script type="text/javascript">var CHECK24_HOST = 'www.check24.de';</script>
+    <script
+        type="text/javascript">window.data = window.data || {}; window.data['tracking'] = { "isGeneralTrackingEnabled": true, "isGoogleTrackingEnabled": true, "isAnalyticsCookieAllowed": true, "deviceOutput": "desktop", "deviceOs": "other", "environment": "prod_app1", "sid": "7b64d96bd7d04c749574e8f0759383a2", "gclid": null, "wpset": "google_dsl_brand_03", "cpid": "ch24_pro_go_prod_brand", "cpref": "", "siteIdentifier": "consumer_landingpage_seo_handwerker" };</script>
 </head>
 
 <body class="md:bg-gray-50">
-  <div class="bg-white max-w-screen-md md:shadow-md mx-auto rounded-md">
-    <nav class="justify-between max-w-screen-md flex flex-wrap md:rounded-md md:mt-8">
-      <h1 class="font-extrabold text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">Search for Craftmen</h1>
-      <ul class="flex space-x-4 p-4 pr-8 self-center sm:m-0 m-auto">
-        <a href="{{ url_for('auth.search') }}">
-        </a>
-      </ul>
-    </nav>
-    <section class="max-w-screen-md mx-auto pt-8 pb-8">
-      {% for message in get_flashed_messages() %}
-      <div class="text-center">{{ message }}</div>
-      {% endfor %} {% block content %}{% endblock %}
-    </section>
-  </div>
+    <div class="bg-white max-w-screen-md md:shadow-md mx-auto rounded-md">
+        <nav class="justify-between max-w-screen-md flex flex-wrap md:rounded-md md:mt-8">
+            <h1 class="font-extrabold text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">Search for Craftmen
+            </h1>
+            <ul class="flex space-x-4 p-4 pr-8 self-center sm:m-0 m-auto">
+                <a href="{{ url_for('auth.search') }}">
+                </a>
+            </ul>
+        </nav>
+        <section class="max-w-screen-md mx-auto pt-8 pb-8">
+            {% for message in get_flashed_messages() %}
+            <div class="text-center">{{ message }}</div>
+            {% endfor %} {% block content %}{% endblock %}
+        </section>
+    </div>
 </body>
+
+<footer>
+    <div class="c24-page-container" id="c24-page-container-footer">
+        <div class="c24-page">
+            <footer class="c24-footer ">
+                <div id="c24-footer">
+                    <div class="c24-footer-top">
+                        <div class="c24-footer-content clearfix">
+                            <div class="c24-footer-jumptotop">zurück zum Seitenanfang</div>
+                            <!-- EMBED:FOOTER_TOP_LINKS_START -->
+                        </div>
+                    </div>
+                    <div class="c24-footer-bottom">
+                        <div class="c24-footer-content clearfix">
+                            <div class="c24-footer-logo-wrapper"> <a class="c24-footer-logo"
+                                    href="https://www.check24.de/"
+                                    title="CHECK24 - Deutschlands größtes Vergleichsportal"></a>
+                            </div>
+                            <div class="c24-footer-bottom-links">
+                                <ul>
+                                    <li class="c24-footer-slim-item c24-footer-link-contact"><a
+                                            href="https://www.check24.de/unternehmen/kontakt/"
+                                            title="Kontakt">Kontakt</a></li>
+                                    <li><a class="c24-footer-link-conditions" href="//profis.check24.de/agb"
+                                            title="Unsere AGB">Unsere AGB</a></li>
+                                    <li><a class="c24-footer-link-privacy" href="//profis.check24.de/datenschutz"
+                                            title="Datenschutz">Datenschutz</a></li>
+                                    <li><a class="c24-footer-link-imprint"
+                                            href="https://www.check24.de/unternehmen/impressum/#comp27"
+                                            title="Impressum">Impressum</a></li>
+                                </ul>
+                            </div>
+                            <div class="c24-footer-copyright"> <span>© 2023 CHECK24
+                                    Vergleichsportal Profis GmbH.</span>
+                                <span>Alle Inhalte unterliegen unserem Copyright.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</footer>

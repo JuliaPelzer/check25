@@ -8,6 +8,6 @@ def test_ranking_85375():
     result = ranker.rank("85375")
 
     for gt, res in zip(ground_truth.itertuples(), result.itertuples()):
-        assert gt.id == res.id
+        assert gt[0] == res[0]
         assert gt.name == res.name
         assert np.isclose(gt.rankingScore, res.rankingScore)

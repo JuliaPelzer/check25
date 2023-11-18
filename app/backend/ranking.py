@@ -70,14 +70,98 @@ class ProviderRanker:
         )
         self.qualities.rename(columns={"profile_id": "id"}, inplace=True)
         self.qualities.set_index("id", inplace=True)
-        # TODO update this on patch
         self.providers = pd.merge(self.providers, self.qualities, on="id")
         self.profile_scores = (
             0.4 * self.providers["profile_picture_score"]
             + 0.6 * self.providers["profile_description_score"]
         )
 
-    @lru_cache(maxsize=128)
+    def get_Patch_Response(self, craftsman_id: int) -> dict:
+        return dict(
+            id=craftsman_id,
+            updated=dict(
+                maxDrivingDistance=self.providers.at[
+                    craftsman_id, "max_driving_distance"
+                ],
+                profilePictureScore=self.providers.at[
+                    craftsman_id, "profile_picture_score"
+                ],
+                profileDescriptionScore=self.providers.at[
+                    craftsman_id, "profile_description_score"
+                ],
+            ),
+        )
+
+    def __update_local(
+        self,
+        craftsman_id: int,
+        profile_picture_score: float = None,
+        profile_description_score: float = None,
+        max_driving_distance: float = None,
+    ) -> None:
+        if max_driving_distance is not None:
+            self.providers.at[
+                craftsman_id, "max_driving_distance"
+            ] = max_driving_distance
+        if profile_description_score is not None:
+            self.providers.at[
+                craftsman_id, "profile_description_score"
+            ] = profile_description_score
+        if profile_picture_score is not None:
+            self.providers.at[
+                craftsman_id, "profile_picture_score"
+            ] = profile_picture_score
+        if profile_description_score is not None or profile_picture_score is not None:
+            self.profile_scores.at[craftsman_id] = (
+                0.4 * self.providers.at[craftsman_id, "profile_picture_score"]
+                + 0.6 * self.providers.at[craftsman_id, "profile_description_score"]
+            )
+
+    def __update_db(
+        self,
+        craftsman_id: int,
+        profile_picture_score: float = None,
+        profile_description_score: float = None,
+        max_driving_distance: float = None,
+    ) -> None:
+        if max_driving_distance is not None:
+            self.db.execute(
+                "UPDATE service_provider_profile SET max_driving_distance = ? WHERE id = ?",
+                (max_driving_distance, craftsman_id),
+            )
+        if profile_description_score is not None:
+            self.db.execute(
+                "UPDATE quality_factor_score SET profile_description_score = ? WHERE profile_id = ?",
+                (profile_description_score, craftsman_id),
+            )
+        if profile_picture_score is not None:
+            self.db.execute(
+                "UPDATE quality_factor_score SET profile_picture_score = ? WHERE profile_id = ?",
+                (profile_picture_score, craftsman_id),
+            )
+        self.db.commit()
+
+    def update(
+        self,
+        craftsman_id: int,
+        profile_picture_score: float = None,
+        profile_description_score: float = None,
+        max_driving_distance: float = None,
+    ) -> None:
+        self.__update_local(
+            craftsman_id,
+            profile_picture_score,
+            profile_description_score,
+            max_driving_distance,
+        )
+        self.__update_db(
+            craftsman_id,
+            profile_picture_score,
+            profile_description_score,
+            max_driving_distance,
+        )
+        self.cache.on_update()
+
     def rank(self, postcode: str) -> pd.DataFrame:
         # TODO document
         result = self.cache[postcode]
@@ -170,8 +254,8 @@ if __name__ == "__main__":
     db_path = pathlib.Path("app/backend/data/db.sqlite")
     start = time.perf_counter()
     ranker = ProviderRanker(db_path)
-    print(f"Loading took {time.perf_counter() - start}s")
+    print(f"Loading took {(time.perf_counter() - start)*1e3:.2f}ms")
     start = time.perf_counter()
     results = ranker.rank(args.postcode)
-    print(f"{len(results)} results in {(time.perf_counter() - start)*1e3}ms")
+    print(f"{len(results)} results in {(time.perf_counter() - start)*1e3:.2f}ms")
     print(results.iloc[:20])

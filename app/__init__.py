@@ -16,7 +16,6 @@ def create_app(test_config=None):
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "app.sqlite"),
     )
-    print(os.getcwd())
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile("config.py", silent=True)
@@ -42,11 +41,6 @@ def create_app(test_config=None):
     from app import auth
 
     app.register_blueprint(auth.bp)
-
-    # from app import todo
-
-    # app.register_blueprint(todo.bp)
-    # app.add_url_rule("/", endpoint="index")
 
     from app import api
 
