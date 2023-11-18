@@ -10,34 +10,23 @@ from flask import (
     session,
     url_for,
 )
-from werkzeug.security import check_password_hash, generate_password_hash
-
-from app.db import get_db
 
 bp = Blueprint("auth", __name__)
 
 
-@bp.route("/", methods=(["GET"]))
+@bp.route("/", methods=(["GET", "POST"]))
 def search():
     if request.method == "POST":
         postcode = request.form["postcode"]
-        db = get_db()
-        error = None
-
-        if error is None:
-            # TODO call stuff
-            return redirect(url_for("auth.results"))
-
-
-        flash(error)
+        return redirect(url_for("auth.results", postalcode=postcode))
 
     return render_template("auth/search.html")
-
 
 
 @bp.route("/details", methods=(["GET"]))
 def details():
     return render_template("auth/details.html")
+
 
 @bp.route("/results", methods=(["GET"]))
 def results():
