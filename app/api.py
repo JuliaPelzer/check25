@@ -12,7 +12,6 @@ bp = Blueprint("api", __name__)
 @bp.route("/craftsmen", methods=["GET"])
 def craftsmen():
     postalcode = request.args["postalcode"]
-    print("test")
     result_df = provider_ranker.rank(postalcode)
     result = interfaces.Response.from_df(result_df).to_json()
 
