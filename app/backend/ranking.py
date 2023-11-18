@@ -41,6 +41,9 @@ def dist(
 class ProviderRanker:
     db_path: os.PathLike
     db: sqlite3.Connection
+    postcodes: pd.DataFrame
+    providers: pd.DataFrame
+    qualities: pd.DataFrame
 
     # TODO better name
     def __init__(
@@ -67,7 +70,7 @@ class ProviderRanker:
             + 0.6 * self.providers["profile_description_score"]
         )
 
-    def rank(self, postcode):
+    def rank(self, postcode: str) -> pd.DataFrame:
         # TODO document
         data = self.postcodes[self.postcodes["postcode"] == postcode].iloc[0]
         driving_distance_bonus = 0
