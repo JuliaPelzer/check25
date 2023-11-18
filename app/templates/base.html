@@ -11,6 +11,15 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   <script src="https://kit.fontawesome.com/25c9ecd121.js" crossorigin="anonymous"></script>
   <style>
+    .decisionbox {
+      background-color: white;
+      color: rgb(82, 84, 87);
+      border-radius: 5px;
+      margin: 20px;
+      padding: 20px;
+    }
+  </style>
+  <style>
     .provider {
       background-color: white;
       color: #063773;
@@ -21,31 +30,12 @@
     }
   </style>
   <style>
-    .decisionbox {
-      background-color: white;
-      color: rgb(82, 84, 87);
-      border-radius: 5px;
-      margin: 20px;
-      padding: 20px;
+    .checked {
+      color: orange;
     }
   </style>
-
   <meta name="Language" content="de">
-  <style>
-    body,
-    .c24-body {
-      background-color: #FAFAFA;
-      margin: 0;
-      font-family: Verdana, Arial, Helvetica, sans-serif;
-      color: #575757;
-      -webkit-font-smoothing: antialiased;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    #c24-content * {
-      box-sizing: border-box;
-    }
-  </style>
+</head>
 
 <body class="md:bg-gray-50">
   <div class="bg-white max-w-screen-md md:shadow-md mx-auto rounded-md">

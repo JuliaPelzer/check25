@@ -4,34 +4,126 @@
 <section>
     <div>
         <div>
-            <h1>X craftmen found in your region</h1>
-            <div>
-                <div class="decisionbox">
-                    <a href="/">Back</a>
+            <div class="border-solid bg-blue-950 text-white pt-4 pb-4 m-5 text-center rounded-xl">
+                <div class="font-bold text-lg">
+                    35 craftmen available in your region
+
                 </div>
+            </div>
+            <div class="border-solid bg-white text-blue-950 rounded-xl m-5 p-2">
+                <a class="italic text-right" href=" /">Back to search </a>
             </div>
         </div>
     </div>
 </section>
 
-<section>
-    <ul>
-        <div class="provider">
-            <a>
-                <span>Provider No. 1</span>
-            </a>
-        </div>
-        <div class="provider">
-            <a>
-                <span>Provider No. 2</span>
-            </a>
-        </div>
-        <div class="provider">
-            <a>
-                <span>Provider No. 3</span>
-            </a>
-        </div>
-    </ul>
-</section>
+<div class="bg-gradient-to-b from-white to-gray-200">
+    <section>
+        <ul>
+            <div class="border-solid bg-gray-300 text-blue-950 rounded-xl m-5 p-5">
+                <div class="sm:flex">
+                    <div class="flex-1 p-3 ml-5">
+                        <img src="{{ url_for('static', filename='example.png') }}" alt="Pic of Craftman"
+                            class="object-none w-40 h-40 rounded-full">
+                    </div>
+                    <div class="flex-1 p-3">
+                        <h3 class="font-bold">Vorname Nachname</h3>
+                        <div>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            (3.0)
+                        </div>
 
+                        <div class="flex">
+                            <div class="flex-1">
+                                <span class="fa fa-map-marker"></span>
+                                <span>Distance: 5km </span>
+                            </div>
+                            <div class="flex-1">
+                                <span class="fa fa-calendar"></span>
+                                <span>Bookings: 5 </span>
+                            </div>
+                        </div>
+                        <div class="border-separate bg-white rounded-md mt-5 p-5">
+                            <a href="/craftmen/provider1">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-solid bg-gray-300 text-blue-950 rounded-xl m-5 p-5">
+                <div class="flex">
+                    <div class="flex-1 p-3 ml-5">
+                        <img src="{{ url_for('static', filename='example.png') }}" alt="Pic of Craftman"
+                            class="object-none w-40 h-40 rounded-full">
+                    </div>
+                    <div class="flex-1 p-3">
+                        <h3 class="font-bold">Vorname Nachname</h3>
+                        <div>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            (3.0)
+                        </div>
+
+                        <div class="flex">
+                            <div class="flex-1">
+                                <span class="fa fa-map-marker"></span>
+                                <span>Distance: 5km </span>
+                            </div>
+                            <div class="flex-1">
+                                <span class="fa fa-calendar"></span>
+                                <span>Bookings: 5 </span>
+                            </div>
+                        </div>
+                        <div class="border-separate bg-white rounded-md mt-5 p-5">
+                            <a href="/craftmen/provider1">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-solid bg-gray-300 text-blue-950 rounded-xl m-5 p-5">
+                <div class="flex">
+                    <div class="flex-1 p-3 ml-5">
+                        <img src="{{ url_for('static', filename='example.png') }}" alt="Pic of Craftman"
+                            class="object-none w-40 h-40 rounded-full">
+                    </div>
+                    <div class="flex-1 p-3">
+                        <h3 class="font-bold">Vorname Nachname</h3>
+                        <div>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            (3.0)
+                        </div>
+
+                        <div class="flex">
+                            <div class="flex-1">
+                                <span class="fa fa-map-marker"></span>
+                                <span>Distance: 5km </span>
+                            </div>
+                            <div class="flex-1">
+                                <span class="fa fa-calendar"></span>
+                                <span>Bookings: 5 </span>
+                            </div>
+                        </div>
+                        <div class="border-separate bg-white rounded-md mt-5 p-5">
+                            <a href="/craftmen/provider1">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+
+        <div class="border-solid bg-blue-950 text-white text-center rounded-xl m-5 p-2">
+            Load more provider
+        </div>
+    </section>
+</div>
 {% endblock %}
