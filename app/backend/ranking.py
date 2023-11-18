@@ -56,7 +56,6 @@ class ProviderRanker:
         self.db_path = db_path
         self.db = sqlite3.connect(self.db_path)
         self.__load_data()
-        self.cache = Cache(128, self.postcodes)
 
     def __load_data(self) -> None:
         self.postcodes = pd.read_sql_query("SELECT * FROM postcode", self.db)
@@ -160,13 +159,11 @@ class ProviderRanker:
             profile_description_score,
             max_driving_distance,
         )
-        self.cache.on_update()
+        self.rank.cache_clear()
 
+    @lru_cache(maxsize=128)
     def rank(self, postcode: str) -> pd.DataFrame:
         # TODO document
-        result = self.cache[postcode]
-        if result is not None:
-            return result
 
         data = self.postcodes.loc[postcode]
         driving_distance_bonus = 0
@@ -201,47 +198,7 @@ class ProviderRanker:
         result = candidates.sort_values(by="rankingScore", ascending=False)[
             ["name", "rankingScore"]
         ]
-        self.cache.insert(postcode, result)
         return result
-
-
-class Cache:
-    def __init__(self, max_size: int, postcodes: pd.DataFrame):
-        self.max_size = max_size
-        self.postcodes = postcodes
-        # each entry in cache is another dict consisting of frequency and
-        # result
-        self.cache = {}
-
-    def __getitem__(self, postcode):
-        # self.read_count += 1
-        if postcode not in self.cache:
-            return None
-
-        self.cache[postcode]["frequency"] += 1
-        return self.cache[postcode]["result"]
-
-    def _find_least_frequent_postcode(self):
-
-        min_frequency = float("inf")
-        min_postcode = None
-        for postcode in self.cache:
-            if self.cache[postcode]["frequency"] < min_frequency:
-                min_frequency = self.cache[postcode]["frequency"]
-                min_postcode = postcode
-        return min_postcode
-
-    def _remove_postcode(self, postcode):
-        del self.cache[postcode]
-
-    def insert(self, postcode, result):
-        if len(self.cache) == self.max_size:
-            postcode_to_remove = self._find_least_frequent_postcode()
-            self._remove_postcode(postcode_to_remove)
-        self.cache[postcode] = {"result": result, "frequency": 1}
-
-    def on_update(self):
-        self.cache = {}
 
 
 if __name__ == "__main__":
