@@ -26,11 +26,18 @@ def search():
 
         if error is None:
             # TODO call stuff
-            pass
+            return render_template("auth/results.html")
+
 
         flash(error)
 
     return render_template("auth/search.html")
+
+
+
+@bp.route("/details", methods=("GET", "POST"))
+def details():
+    return render_template("auth/details.html")
 
 
 # @bp.before_app_request

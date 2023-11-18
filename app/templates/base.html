@@ -4,26 +4,1798 @@
 </html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search for Craftmen</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  <script src="https://kit.fontawesome.com/25c9ecd121.js" crossorigin="anonymous"></script>
+    <title>Search for Craftmen | CHECK24 Profis
+    </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="https://kit.fontawesome.com/25c9ecd121.js" crossorigin="anonymous"></script>
+    <style>
+        .provider {
+          background-color: #063773;
+          color: white;
+          /* border: 2px solid #063773; */
+          /* # "bg-blue-500 px-8 py-4 text-white font-bold rounded-xl" */
+          margin: 20px;
+          padding: 20px;
+        }
+    </style>
+    <style>
+        .decisionbox {
+          background-color: rgb(61, 74, 90);
+          color: white;
+          /* border: 2px solid #063773; */
+          /* # "bg-blue-500 px-8 py-4 text-white font-bold rounded-xl" */
+          margin: 20px;
+          padding: 20px;
+          content: "width=device-width, initial-scale=0.5"
+        }
+    </style>
+    
+    <meta name="Language" content="de">
+    <meta name="Keywords" content="">
+    <meta name="Publisher" content="CHECK24, München">
+    <meta name="Copyright" content="CHECK24, München">
+    <meta name="Page-topic" content="">
+    <meta name="Robots" content="index, follow">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.check24.de/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.check24.de/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.check24.de/favicon-16x16.png">
+    <link rel="mask-icon" href="https://www.check24.de/safari-pinned-tab.svg" color="#063773">
+    <link rel="shortcut icon" href="https://www.check24.de/favicon.ico">
+    <meta name="msapplication-TileColor" content="#063773">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="c24-wf-version" content="2023-1-23">
+    <style>
+        body,
+        .c24-body {
+            background-color: #FAFAFA;
+            margin: 0;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            color: #575757;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        #c24-content * {
+            box-sizing: border-box;
+        }
+    </style>
+
+    <link rel="stylesheet"
+        href="https://assets.handwerk.check24.de/build/cs-landingpage/lp-category-desktop-theme.5d6d818d.css"
+        media="screen">
+    <style>
+        html {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        .c-WireframeContact {
+            color: #575757;
+            font-size: 12px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            line-height: 14px;
+            padding: 0;
+        }
+
+        .c-WireframeContact-title {
+            font-weight: bold;
+            font-size: 14px;
+            padding-bottom: 10px;
+            text-align: left;
+        }
+
+        .c-WireframeContact-phoneNumber {
+            color: #575757;
+            font-weight: normal;
+            padding-bottom: 5px;
+        }
+
+        .c-WireframeContact-openingTime {
+            padding-bottom: 20px;
+        }
+
+        .c-WireframeContact-mailInfoText {
+            padding-bottom: 5px;
+        }
+
+        .c-WireframeContact-mail {
+            color: #575757;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css"
+        href="https://wireframe.check24.de/2023-1-23/assets/desktop/wireframe.min.css" media="screen">
+    <script type="text/javascript">var CHECK24_HOST = 'www.check24.de';</script>
+    <script
+        type="text/javascript">window.data = window.data || {}; window.data['tracking'] = { "isGeneralTrackingEnabled": true, "isGoogleTrackingEnabled": true, "isAnalyticsCookieAllowed": true, "deviceOutput": "desktop", "deviceOs": "other", "environment": "prod_app1", "sid": "7b64d96bd7d04c749574e8f0759383a2", "gclid": null, "wpset": "google_dsl_brand_03", "cpid": "ch24_pro_go_prod_brand", "cpref": "", "siteIdentifier": "consumer_landingpage_seo_handwerker" };</script>
 </head>
 
-<body class="md:bg-gray-50">
-  <div class="bg-white max-w-screen-md md:shadow-md mx-auto rounded-md">
-    <nav class="justify-between max-w-screen-md flex flex-wrap md:rounded-md md:mt-8">
-      <h1 class="font-extrabold text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">Search for Craftmen</h1>
-      <ul class="flex space-x-4 p-4 pr-8 self-center sm:m-0 m-auto">
-        <a href="{{ url_for('auth.search') }}">
-        </a>
-      </ul>
-    </nav>
-    <section class="max-w-screen-md mx-auto pt-8 pb-8">
-      {% for message in get_flashed_messages() %}
-      <div class="text-center">{{ message }}</div>
-      {% endfor %} {% block content %}{% endblock %}
-    </section>
-  </div>
-</body>
+<body class="c24-body c24-wide c24-fluid-grid ">
+    <div class="c24-blocking-layer"></div>
+    <div class="c24-cookie-consent-wrapper" data-nosnippet="">
+        <div class="c24-cookie-consent-notice">
+            <div class="c24-cookie-consent-notice-cnt clearfix" style="margin-bottom: 20px;">
+                <div class="c24-cc-logo"></div> <a class="c24-cookie-consent-functional"
+                    onclick="Check24.cookieBanner.c24consent.giveConsent('f')">Nur notwendige Cookies</a>
+            </div>
+            <div class="c24-cookie-consent-notice-cnt">
+                <div class="c24-cookie-consent-notice-text">
+                    <div class="c24-cookie-consent-notice-title">Unvergleichlich lecker</div>
+                    <div>
+                        Mit dem Klick auf „Geht klar” ermöglichen Sie uns Ihnen über Cookies ein verbessertes
+                        Nutzungserlebnis zu servieren und dieses kontinuierlich zu verbessern. Damit können wir Ihnen
+                        personalisierte Empfehlungen auch auf Drittseiten ausspielen. Über „Anpassen” können Sie Ihre
+                        persönlichen Präferenzen festlegen. Dies ist auch nachträglich jederzeit möglich. Mit dem Klick
+                        auf „Nur notwendige Cookies” werden lediglich technisch notwendige Cookies gespeichert.
+                    </div>
+                </div>
+            </div>
+            <div class="c24-cookie-consent-notice-buttons clearfix"> <a
+                    class="c24-cookie-consent-button c24-cookie-consent-button-secondary"
+                    onclick="Check24.cookieBanner.c24consent.showConsentScreen()">Anpassen</a> <a
+                    class="c24-cookie-consent-button" onclick="Check24.cookieBanner.c24consent.giveConsent('fam')">Geht
+                    klar</a> </div> <a class="c24-cookie-consent-imprint"
+                href="https://www.check24.de/unternehmen/impressum/#cookies" target="_blank"
+                rel="noopener noreferrer">Datenschutzerklärung</a> <a class="c24-cookie-consent-imprint"
+                href="https://www.check24.de/unternehmen/impressum/" target="_blank"
+                rel="noopener noreferrer">Impressum</a>
+        </div>
+        <div class="c24-cookie-consent-screen">
+            <div class="c24-cookie-consent-screen-cnt clearfix" style="margin-bottom: 20px;">
+                <div class="c24-cc-logo"></div> <a class="c24-cookie-consent-backlink"
+                    onclick="Check24.cookieBanner.c24consent.showNoticeScreen()">« zurück</a>
+            </div>
+            <div class="c24-cookie-consent-screen-cnt"
+                onclick="event.stopPropagation(); window.event.cancelBubble = true">
+                <div class="c24-cookie-consent-screen-header">
+                    <div>
+                        <div class="c24-cookie-consent-screen-title">Ihre Cookie-Präferenzen verwalten</div>
+                        <div style="margin-bottom: 20px;">Wählen Sie, welche Cookies Sie auf check24.de
+                            akzeptieren.<br>Die Cookierichtlinie finden Sie <a class="c24-cookie-consent-cookielink"
+                                href="https://www.check24.de/unternehmen/cookiehinweis/" target="_blank">hier.</a></div>
+                    </div>
+                </div>
+                <div class="c24-cookie-consent-screen-list">
+                    <div class="c24-cookie-consent-screen-list-entry">
+                        <div class="c24-cookie-consent-screen-list-entry-header">
+                            <div style="cursor: initial"> <input id="check24-cookie-functional" type="checkbox" checked
+                                    disabled> <span></span> </div>
+                            <div style="cursor: initial">Notwendig</div>
+                            <div
+                                onclick="Check24.cookieBanner.c24consent.toggleDescriptionText('c24-cookie-functional-text', 'c24-cookie-consent-functional-more-icon')">
+                                <span class="c24-cookie-consent-button-more-icon"
+                                    id="c24-cookie-consent-functional-more-icon"> <svg version="1.1" x="0px" y="0px"
+                                        viewBox="0 0 189.5 100" xml:space="preserve">
+                                        <polygon fill="#b4b4b4" points="0,0 189.5,0 89.5,100"></polygon>
+                                    </svg> </span> </div>
+                        </div>
+                        <div class="c24-cookie-consent-screen-list-entry-content" id="c24-cookie-functional-text">
+                            Diese Cookies und andere Informationen sind für die Funktion unserer Services unbedingt
+                            erforderlich. Sie garantieren, dass unser Service sicher und so wie von Ihnen gewünscht
+                            funktioniert. Daher kann man sie nicht deaktivieren.<br><br> <a
+                                class="c24-cookie-consent-cookielink"
+                                href="https://www.check24.de/unternehmen/cookiehinweis/" target="_blank">Zur
+                                Cookierichtlinie</a> </div>
+                    </div>
+                    <div class="c24-cookie-consent-screen-list-entry">
+                        <div class="c24-cookie-consent-screen-list-entry-header">
+                            <div onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-analytics')">
+                                <input id="check24-cookie-analytics" type="checkbox"> <span></span> </div>
+                            <div onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-analytics')">
+                                Analytisch</div>
+                            <div
+                                onclick="Check24.cookieBanner.c24consent.toggleDescriptionText('c24-cookie-analytics-text', 'c24-cookie-consent-analytics-more-icon')">
+                                <span class="c24-cookie-consent-button-more-icon"
+                                    id="c24-cookie-consent-analytics-more-icon"> <svg version="1.1" x="0px" y="0px"
+                                        viewBox="0 0 189.5 100" xml:space="preserve">
+                                        <polygon fill="#b4b4b4" points="0,0 189.5,0 89.5,100"></polygon>
+                                    </svg> </span> </div>
+                        </div>
+                        <div class="c24-cookie-consent-screen-list-entry-content" id="c24-cookie-analytics-text">
+                            Wir möchten für Sie unseren Service so gut wie möglich machen. Daher verbessern wir unsere
+                            Services und Ihr Nutzungserlebnis stetig. Um dies zu tun, möchten wir die Nutzung des
+                            Services analysieren und in statistischer Form auswerten.<br><br> <a
+                                class="c24-cookie-consent-cookielink"
+                                href="https://www.check24.de/unternehmen/cookiehinweis/" target="_blank">Zur
+                                Cookierichtlinie</a> </div>
+                    </div>
+                    <div class="c24-cookie-consent-screen-list-entry">
+                        <div class="c24-cookie-consent-screen-list-entry-header">
+                            <div onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing')">
+                                <input id="check24-cookie-marketing" type="checkbox"> <span></span> </div>
+                            <div onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing')">
+                                Marketing</div>
+                            <div
+                                onclick="Check24.cookieBanner.c24consent.toggleDescriptionText('c24-cookie-marketing-text', 'c24-cookie-consent-marketing-more-icon')">
+                                <span class="c24-cookie-consent-button-more-icon"
+                                    id="c24-cookie-consent-marketing-more-icon"> <svg version="1.1" x="0px" y="0px"
+                                        viewBox="0 0 189.5 100" xml:space="preserve">
+                                        <polygon fill="#b4b4b4" points="0,0 189.5,0 89.5,100"></polygon>
+                                    </svg> </span> </div>
+                        </div>
+                        <div class="c24-cookie-consent-screen-list-entry-content" id="c24-cookie-marketing-text">
+                            Um Ihnen unser Angebot kostenfrei anbieten zu können, finanzieren wir uns u.a. durch
+                            Werbeeinblendungen und richten werbliche und nicht-werbliche Inhalte auf Ihre Interessen
+                            aus. Dafür arbeiten wir mit ausgewählten Partnern zusammen. Ihre Einstellungen können Sie
+                            jederzeit mit Klick auf Datenschutz im unteren Bereich unserer Webseite anpassen.
+                            Ausführlichere Informationen zu den folgenden ausgeführten Verarbeitungszwecken finden Sie
+                            ebenfalls in unserer Datenschutzerklärung.
+                            <div class="c24-cookie-consent-screen-list-m-title">Wir benötigen Ihre Zustimmung für die
+                                folgenden Verarbeitungszwecke:</div>
+                            <div class="c24-cookie-consent-screen-list-m clearfix">
+                                <div class="c24-cookie-consent-screen-list-m-entry clearfix">
+                                    <div class="c24-cookie-consent-screen-list-entry-header">
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-1')">
+                                            <input class="c24-cookie-consent-m-toggle" id="check24-cookie-marketing-1"
+                                                type="checkbox"> <span></span> </div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-1')">
+                                            Informationen auf einem Gerät speichern und/oder abrufen</div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleDescriptionText('c24-cookie-marketing-1-text', 'c24-cookie-consent-marketing-1-more-icon')">
+                                            <span class="c24-cookie-consent-button-more-icon"
+                                                id="c24-cookie-consent-marketing-1-more-icon"> <svg version="1.1"
+                                                    x="0px" y="0px" viewBox="0 0 189.5 100" xml:space="preserve">
+                                                    <polygon fill="#b4b4b4" points="0,0 189.5,0 89.5,100"></polygon>
+                                                </svg> </span> </div>
+                                    </div>
+                                    <div class="c24-cookie-consent-screen-list-entry-content"
+                                        id="c24-cookie-marketing-1-text">
+                                        Für die Ihnen angezeigten Verarbeitungszwecke können Cookies, Geräte-Kennungen
+                                        oder andere Informationen auf Ihrem Gerät gespeichert oder abgerufen werden.
+                                    </div>
+                                </div>
+                                <div class="c24-cookie-consent-screen-list-m-entry clearfix">
+                                    <div class="c24-cookie-consent-screen-list-entry-header">
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-2')">
+                                            <input class="c24-cookie-consent-m-toggle" id="check24-cookie-marketing-2"
+                                                type="checkbox"> <span></span> </div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-2')">
+                                            Auswahl einfacher Anzeigen</div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleDescriptionText('c24-cookie-marketing-2-text', 'c24-cookie-consent-marketing-2-more-icon')">
+                                            <span class="c24-cookie-consent-button-more-icon"
+                                                id="c24-cookie-consent-marketing-2-more-icon"> <svg version="1.1"
+                                                    x="0px" y="0px" viewBox="0 0 189.5 100" xml:space="preserve">
+                                                    <polygon fill="#b4b4b4" points="0,0 189.5,0 89.5,100"></polygon>
+                                                </svg> </span> </div>
+                                    </div>
+                                    <div class="c24-cookie-consent-screen-list-entry-content"
+                                        id="c24-cookie-marketing-2-text">
+                                        Anzeigen können Ihnen basierend auf den Inhalten, die Sie ansehen, der
+                                        Anwendung, die Sie verwenden oder Ihrem ungefähren Standort oder Ihrem Gerätetyp
+                                        eingeblendet werden.
+                                    </div>
+                                </div>
+                                <div class="c24-cookie-consent-screen-list-m-entry clearfix">
+                                    <div class="c24-cookie-consent-screen-list-entry-header">
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-3')">
+                                            <input class="c24-cookie-consent-m-toggle" id="check24-cookie-marketing-3"
+                                                type="checkbox"> <span></span> </div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-3')">
+                                            Ein personalisiertes Anzeigen-Profil erstellen</div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleDescriptionText('c24-cookie-marketing-3-text', 'c24-cookie-consent-marketing-3-more-icon')">
+                                            <span class="c24-cookie-consent-button-more-icon"
+                                                id="c24-cookie-consent-marketing-3-more-icon"> <svg version="1.1"
+                                                    x="0px" y="0px" viewBox="0 0 189.5 100" xml:space="preserve">
+                                                    <polygon fill="#b4b4b4" points="0,0 189.5,0 89.5,100"></polygon>
+                                                </svg> </span> </div>
+                                    </div>
+                                    <div class="c24-cookie-consent-screen-list-entry-content"
+                                        id="c24-cookie-marketing-3-text">
+                                        Über Sie und Ihre Interessen kann ein Profil erstellt werden, um Ihnen für Sie
+                                        relevante personalisierte Anzeigen einzublenden.
+                                    </div>
+                                </div>
+                                <div class="c24-cookie-consent-screen-list-m-entry clearfix">
+                                    <div class="c24-cookie-consent-screen-list-entry-header">
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-4')">
+                                            <input class="c24-cookie-consent-m-toggle" id="check24-cookie-marketing-4"
+                                                type="checkbox"> <span></span> </div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-4')">
+                                            Personalisierte Anzeigen auswählen</div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleDescriptionText('c24-cookie-marketing-4-text', 'c24-cookie-consent-marketing-4-more-icon')">
+                                            <span class="c24-cookie-consent-button-more-icon"
+                                                id="c24-cookie-consent-marketing-4-more-icon"> <svg version="1.1"
+                                                    x="0px" y="0px" viewBox="0 0 189.5 100" xml:space="preserve">
+                                                    <polygon fill="#b4b4b4" points="0,0 189.5,0 89.5,100"></polygon>
+                                                </svg> </span> </div>
+                                    </div>
+                                    <div class="c24-cookie-consent-screen-list-entry-content"
+                                        id="c24-cookie-marketing-4-text">
+                                        Personalisierte Anzeigen können Ihnen basierend auf einem über Sie erstellten
+                                        Profil eingeblendet werden.
+                                    </div>
+                                </div>
+                                <div class="c24-cookie-consent-screen-list-m-entry clearfix">
+                                    <div class="c24-cookie-consent-screen-list-entry-header">
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-5')">
+                                            <input class="c24-cookie-consent-m-toggle" id="check24-cookie-marketing-5"
+                                                type="checkbox"> <span></span> </div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleCheckbox('check24-cookie-marketing-5')">
+                                            Ein personalisiertes Inhalts-Profil erstellen</div>
+                                        <div
+                                            onclick="Check24.cookieBanner.c24consent.toggleDescriptionText('c24-cookie-marketing-5-text', 'c24-cookie-consent-marketing-5-more-icon')">
+                                            <span class="c24-cookie-consent-button-more-icon"
+                                                id="c24-cookie-consent-marketing-5-more-icon"> <svg version="1.1"
+                                                    x="0px" y="0px" viewBox="0 0 189.5 100" xml:space="preserve">
+                                                    <polygon fill="#b4b4b4" points="0,0 189.5,0 89.5,100"></polygon>
+                                                </svg> </span> </div>
+                                    </div>
+                                    <div class="c24-cookie-consent-screen-list-entry-content"
+                                        id="c24-cookie-marketing-5-text">
+                                        Über Sie und Ihre Interessen kann ein Profil erstellt werden, um Ihnen für Sie
+                                        relevante personalisierte Inhalte anzuzeigen.
+                                    </div>
+                                </div>
+                            </div> <a class="c24-cookie-consent-cookielink"
+                                href="https://www.check24.de/unternehmen/cookiehinweis/" target="_blank">Zur
+                                Cookierichtlinie</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c24-cookie-consent-screen-buttons clearfix"> <a
+                    class="c24-cookie-consent-button c24-cookie-consent-buttonlink"
+                    onclick="Check24.cookieBanner.c24consent.giveMarketingConsent()">Auswahl speichern</a> <a
+                    class="c24-cookie-consent-button" onclick="Check24.cookieBanner.c24consent.giveConsent('fam')">Alle
+                    akzeptieren</a> </div>
+        </div>
+        <div class="c24-strict-blocking-layer"></div>
+    </div>
+    <div id="c24-page-and-ads">
+        <div id="c24-ads" class="clearfix">
+            <div id="c24-ads-content" class="clearfix">
+                <div class="c24-ad-banner" id="c24-ad-leaderboard"> </div>
+                <div class="c24-ad-skyscraper" id="c24-ad-skyscraper"> </div>
+            </div>
+        </div>
+        <div class="c24-page-container" id="c24-page-container-header">
+            <div class="c24-page">
+                <header>
+                    <div id="c24-header" class="c24-header ">
+                        <div class="c24-header-inner">
+                            <div id="c24-header-top">
+                                <div class="c24-header-content clearfix"> <a href="https://www.check24.de/"
+                                        class="c24-logo" title="CHECK24 - Deutschlands größtes Vergleichsportal"></a>
+                                    <div class="c24-customer c24-customer-expired"> <a
+                                            class="c24-customer-hover-wrapper"
+                                            href="https://kundenbereich.check24.de/user/account.html?o=overview"> <span
+                                                class="c24-customer-icon c24-customer-icon-li c24-header-hover"></span>
+                                            <span class="c24-customer-hover c24-header-hover"> Julia Pelzer </span> </a>
+                                        <div class="c24-customer-layer c24-header-hover-layer">
+                                            <div class="c24-customer-layer-corner"></div>
+                                            <ul class="c24-customer-options">
+                                                <li><a
+                                                        href="https://kundenbereich.check24.de/user/account.html?o=overview">Mein
+                                                        Konto</a></li>
+                                                <li><a
+                                                        href="https://kundenbereich.check24.de/user/account.html?o=activitylist">Meine
+                                                        Aktivitäten</a></li>
+                                                <li><a href="https://www.check24.de/messagecenter/">Meine
+                                                        Nachrichten</a></li>
+                                                <li><a
+                                                        href="https://kundenbereich.check24.de/user/account.html?o=alarm">Spar
+                                                        Alarm</a></li>
+                                                <li><a
+                                                        href="https://kundenbereich.check24.de/user/account.html?o=cs_codes">Gutscheine
+                                                        & Guthaben</a></li>
+                                                <li><a
+                                                        href="https://kundenbereich.check24.de/user/account.html?o=points">CHECK24
+                                                        Punkte</a></li>
+                                            </ul>
+                                            <ul class="c24-customer-center">
+                                                <li> <a href="https://www.check24.de/versicherungscenter/">
+                                                        <span>Versicherungscenter</span> <span>Ihr digitaler
+                                                            Versicherungsordner - Verträge und Bedarf richtig
+                                                            prüfen</span> </a> </li>
+                                                <li> <a
+                                                        href="https://kredit.check24.de/creditcenter/?linkedfrom=wf&openLogin=1">
+                                                        <span>Kreditcenter</span> <span>Ihre aktuellen Kreditanfragen
+                                                            und Kreditzusagen auf einen Blick</span> </a> </li>
+                                                <li> <a href="https://www.check24.de/geldanlagecenter/">
+                                                        <span>Geldanlagecenter</span> <span>Ihr Zugang zu den besten
+                                                            Tages- und Festgeld-Zinsen in Europa</span> </a> </li>
+                                                <li> <a href="https://homecenter.check24.de/">
+                                                        <span>Haushaltscenter</span> <span>Ihre Wechselfristen für
+                                                            Energie- und Internet-Verträge nutzen und erneut
+                                                            sparen</span> </a> </li>
+                                                <li> <a href="https://kundenbereich.check24.de/?o=travels">
+                                                        <span>Reisecenter</span> <span>Ihre Reisebuchungen in
+                                                            der<br>Übersicht bequem verwalten</span> </a> </li>
+                                                <li> <a href="https://community.check24.de/"> <span>Reise
+                                                            Community</span> <span>Fragen stellen, Tipps erhalten,
+                                                            Erlebnisse teilen, Chats mit Reisenden vor Ort</span> </a>
+                                                </li>
+                                            </ul>
+                                            <div class="c24-customer-check"> <a
+                                                    href="//kundenbereich.check24.de/user/logout.html?ref=https://handwerk.check24.de/craftsmen/handwerker?c9_dr%3D7b04dfbe9ff2c119fad9%26utm_campaign%3Dc24search%26utm_content%3Dhandwerker%26utm_medium%3Ddirect%26utm_source%3Dcheck24%26utm_term%3Dhandwerker"
+                                                    title="Abmelden">Abmelden</a> </div>
+                                        </div>
+                                    </div>
+                                    <div class="c24-customer-trigger" id="c24-customer-trigger">
+                                        <div class="c24-customer-layer c24-header-hover-layer c24-ignore-dc-event">
+                                            <div class="c24-customer-layer-corner"></div>
+                                            <div class="c24-customer-trigger-close"> <svg version="1.1" x="0px" y="0px"
+                                                    viewBox="0 0 357 357" xml:space="preserve">
+                                                    <g>
+                                                        <polygon fill="#b4b4b4"
+                                                            points="357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3 214.2,178.5">
+                                                        </polygon>
+                                                    </g>
+                                                </svg> </div>
+                                            <div class="c24-customer-trigger-text"> </div> <a
+                                                class="c24-button c24-customer-login-opener c24-uliloginlayer-login-opener">Anmelden</a>
+                                            <div class="c24-customer-salutation-text"> <span>Neuer Kunde? </span> <a
+                                                    class="c24-meinkonto-reflink c24-customer-register-opener c24-uliloginlayer-register-opener">Starten
+                                                    Sie hier.</a> </div>
+                                        </div>
+                                    </div>
+                                    <div class="c24-contact c24-header-hover clearfix"> <a
+                                            class="c24-contact-content clearfix"
+                                            href="https://www.check24.de/unternehmen/kontakt/"> <span
+                                                class="c24-contact-icon"> <span class="c24-contact-icon-svg"></span>
+                                            </span>
+                                            <div class="c24-phone" x-ms-format-detection="none"> 030 - 220 127 917 <span
+                                                    class="c24-phone-help">
+                                                    Hilfe und Kontakt
+                                                </span> </div>
+                                        </a>
+                                        <div class="c24-contact-layer c24-header-hover-layer" id="chatty-chatbot-layer">
+                                            <div class="c24-contact-layer-corner"></div>
+                                            <div class="c-WireframeContact">
+                                                <div class="c-WireframeContact-title">Ihre pers&ouml;nliche
+                                                    Expertenberatung</div>
+                                                <div class="c-WireframeContact-phoneNumber">030 - 220 127 917</div>
+                                                <div class="c-WireframeContact-openingTime">Mo. - Fr. 08:00 - 18:00 Uhr
+                                                </div>
+                                                <div class="c-WireframeContact-mailInfoText">Kontaktieren Sie uns gerne
+                                                    auch per E-Mail:</div>
+                                                <div class="c-WireframeContact-mail">
+                                                    <a href="mailto:handwerk@check24.de">handwerk@check24.de</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="c24-notification"> <a class="c24-notification-icon c24-header-hover"
+                                            href="https://kundenbereich.check24.de/?o=notifications"> <span
+                                                class="c24-notification-icon-svg-active"></span> <span
+                                                class="c24-notification-icon-svg"></span>
+                                            <div class="c24-notification-count"></div>
+                                        </a>
+                                        <div class="c24-notification-layer-hover">
+                                            <div class="c24-notification-layer-corner"></div>
+                                            <div class="c24-notification-layer">
+                                                <div class="content"></div> <a class="all" href=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="c24-mylists c24-mylists-heart c24-mylists-product c24-mylists-home"
+                                        id="c24-mylists"> <a class="c24-mylists-content clearfix"
+                                            href="https://kundenbereich.check24.de/?o=lists"> <span
+                                                class="c24-mylists-icon c24-header-hover"> <span
+                                                    class="c24-mylists-icon-svg"></span> <span
+                                                    class="c24-mylists-icon-svg-active"></span> </span>
+                                            <div class="c24-mylists-count"></div>
+                                            <div class="c24-mylists-label">Merkzettel</div>
+                                        </a>
+                                        <div class="c24-mylists-layer c24-header-hover-layer">
+                                            <div class="c24-mylists-layer-corner"></div>
+                                            <div class="c24-mylists-layer-content">
+                                                <div class="c24-mylists-available">
+                                                    <div class="c24-mylists-lists">
+                                                        <div class="c24-mylists-headline clearfix">
+                                                            <span>Merkzettel</span> </div>
+                                                        <div class="c24-mylists-lists-items"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-mylists-no-items">
+                                                    <div class="c24-mylists-headline clearfix"> <span>Merkzettel</span>
+                                                    </div>
+                                                    Ihr Merkzettel ist leer.
+                                                </div>
+                                                <div class="empty">Bitte melden Sie sich in Ihrem CHECK24 Kundenkonto
+                                                    an, um Ihren Merkzettel zu sehen.</div>
+                                            </div> <a class="all" href=""><span></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="c24-search-icon c24-header-hover"></div>
+                                    <div class="c24-search">
+                                        <div class="c24-search-corner"></div>
+                                        <div class="c24-search-content">
+                                            <form action="https://www.check24.de/suche/" method="get"
+                                                accept-charset="utf-8" id="c24-search-form" spellcheck="false">
+                                                <fieldset> <input type="text" id="c24-search-header" name="q"
+                                                        class="c24-search-input"
+                                                        placeholder="Was möchten Sie vergleichen?" value=""> <input
+                                                        type="hidden" name="source" id="source_suggest" value="input">
+                                                    <div class="c24-search-button"> <svg version="1.1" x="0px" y="0px"
+                                                            viewBox="0 0 87.1 100">
+                                                            <path fill="#333333" d="M64.8,14.1C52.6-1.7,29.9-4.6,14.1,7.5S-4.6,42.4,7.5,58.2c11,14.2,30.3,17.9,45.6,9.9L77,99
+c0.9,1.2,2.6,1.4,3.6,0.5l5.5-4.2c1.2-0.9,1.4-2.6,0.5-3.6L62.8,60.8C74.5,48,75.8,28.2,64.8,14.1z M52.9,57.8
+c-11.9,9.2-29.1,7-38.3-5c-9.3-11.9-7-29.1,5-38.3c11.9-9.3,29.1-7,38.3,5C67.1,31.4,64.8,48.5,52.9,57.8z"></path>
+                                                        </svg> </div>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="c24-header-bottom">
+                                <div class="c24-header-content">
+                                    <nav>
+                                        <div class="c24-nav clearfix">
+                                            <div class="c24-nav-hz clearfix">
+                                                <div class="c24-nav-ele c24-nav-insurance"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://www.check24.de/versicherungen/"
+                                                        title="Versicherungen"><span>Versicherungen</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-ver">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Auto & Fahrzeuge</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/kfz-versicherung/"
+                                                                            title="Kfz-Versicherung"><span>Kfz-Versicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/motorradversicherung/"
+                                                                            title="Motorradversicherung"><span>Motorradversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/mopedversicherung/"
+                                                                            title="Mopedversicherung"
+                                                                            style="display: inline;"><span>Moped</span></a>
+                                                                        oder <a
+                                                                            href="https://www.check24.de/e-scooter-versicherung/"
+                                                                            title="E-Scooter Versicherung"
+                                                                            style="display: inline;"><span>E-Scooter</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/kfz-schutzbrief/"
+                                                                            title="Schutzbrief/Automobilclub"><span>Schutzbrief/Automobilclub</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/fahrradversicherung/"
+                                                                            title="Fahrradversicherung"><span>Fahrradversicherung</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/krankenversicherung/"
+                                                                    title="Krankenversicherung">Krankenversicherung</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/private-krankenversicherung/"
+                                                                            title="Private Krankenversicherung"><span>Private
+                                                                                Krankenversicherung</span></a></li>
+                                                                    <li><a href="https://www.check24.de/gesetzliche-krankenversicherung/"
+                                                                            title="Gesetzliche Krankenkassen"><span>Gesetzliche
+                                                                                Krankenkassen</span></a></li>
+                                                                    <li><a href="https://www.check24.de/zahnzusatzversicherung/"
+                                                                            title="Zahnzusatzversicherung"><span>Zahnzusatzversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/krankenhauszusatzversicherung/"
+                                                                            title="Krankenhauszusatzversicherung"><span>Krankenhauszusatz</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/heilpraktiker-zusatzversicherung/"
+                                                                            title="Heilpraktiker-Zusatzversicherung"
+                                                                            style="display: inline;"><span>Heilpraktiker</span></a>
+                                                                        und <a
+                                                                            href="https://www.check24.de/brillenversicherung/"
+                                                                            title="Brillenversicherung"
+                                                                            style="display: inline;"><span>Brille</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Haus & Wohnung</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/hausratversicherung/"
+                                                                            title="Hausratversicherung"><span>Hausratversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/wohngebaeudeversicherung/"
+                                                                            title="Wohngebäudeversicherung"><span>Wohngebäudeversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/wohngebaeudeversicherung/neubauversicherung/"
+                                                                            title="Neubauversicherung"><span>Neubauversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/elementarversicherung/"
+                                                                            title="Elementarversicherung"><span>Elementarversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/mietkautionsversicherung/"
+                                                                            title="Mietkautionsversicherung"><span>Mietkautionsversicherung</span></a>
+                                                                    </li>
+                                                                </ul> <span class="c24-subnav-ele-title">Risiko &
+                                                                    Vorsorge</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/risikolebensversicherung/"
+                                                                            title="Risikolebensversicherung"><span>Risikolebensversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/unfallversicherung/"
+                                                                            title="Unfallversicherung"><span>Unfallversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/berufsunfaehigkeitsversicherung/"
+                                                                            title="Berufsunfähigkeitsversicherung"><span>Berufsunfähigkeit</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/grundfaehigkeitsversicherung/"
+                                                                            title="Grundfähigkeitsversicherung"><span>Grundfähigkeitsversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/sterbegeldversicherung/"
+                                                                            title="Sterbegeldversicherung"><span>Sterbegeldversicherung</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/tierversicherung/"
+                                                                    title="Tierversicherungen">Tierversicherungen</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/hundehaftpflicht/"
+                                                                            title="Hundehaftpflichtversicherung"><span>Hundehaftpflicht</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/hundekrankenversicherung/"
+                                                                            title="Hundekrankenversicherung"><span>Hundekrankenversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/katzenversicherung/"
+                                                                            title="Katzenversicherung"><span>Katzenversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/pferdehaftpflicht/"
+                                                                            title="Pferdehaftpflichtversicherung"><span>Pferdehaftpflicht</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/pferde-op-versicherung/"
+                                                                            title="Pferde-OP-Versicherung"><span>Pferde-OP-Versicherung</span></a>
+                                                                    </li>
+                                                                </ul> <span class="c24-subnav-ele-title"><a
+                                                                        href="https://www.check24.de/altersvorsorge/"
+                                                                        title="Altersvorsorge">Altersvorsorge</a> &
+                                                                    Pflege</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/rentenversicherung/"
+                                                                            title="Rentenversicherung"><span>Rentenversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/riester-rente/"
+                                                                            title="Riester-Rente"><span>Riester-Rente</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/ruerup-rente/"
+                                                                            title="Rürup-Rente"><span>Rürup-Rente</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/rentenversicherung/sofortrente-einmalbeitrag/"
+                                                                            title="Sofort-Rente"><span>Sofort-Rente</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/pflegeversicherung/"
+                                                                            title="Pflegeversicherung"><span>Pflegeversicherung</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Haftpflicht &
+                                                                    Recht</span>
+                                                                <ul class="c24-subnav-ele-list c24-nav-list-space-1">
+                                                                    <li><a href="https://www.check24.de/privathaftpflicht/"
+                                                                            title="Privathaftpflichtversicherung"><span>Privathaftpflicht</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/haftpflichtversicherung/diensthaftpflichtversicherung/"
+                                                                            title="Diensthaftpflicht"><span>Diensthaftpflicht</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/rechtsschutzversicherung/"
+                                                                            title="Rechtsschutzversicherung"><span>Rechtsschutzversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/rechtshilfe/fluggastrechte/"
+                                                                            title="Fluggastrechte"><span>Fluggastrechte</span></a>
+                                                                    </li>
+                                                                </ul> <span class="c24-subnav-ele-title">Handy &
+                                                                    Reise</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/handyversicherung/"
+                                                                            title="Handyversicherung"><span>Handyversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/reiseversicherung/"
+                                                                            title="Reiseversicherung"><span>Reiseversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/auslandskrankenversicherung/"
+                                                                            title="Auslandskrankenversicherung"><span>Auslandskrankenversicherung</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full"> <a
+                                                                href="https://www.check24.de/versicherungscenter/"
+                                                                title="Versicherungscenter"><span><strong>Versicherungscenter</strong>
+                                                                    - Versicherungen verwalten und optimieren</span></a>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full last"> <a
+                                                                href="https://thg.check24.de/"
+                                                                title="THG-Prämie"><span><strong>THG-Prämie</strong> -
+                                                                    jährliche Prämie für Ihr Elektrofahrzeug
+                                                                    sichern</span></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-konto"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://www.check24.de/konto-kredit/"
+                                                        title="Konto & Kredit"><span>Konto & Kredit</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-fin">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/kredit/"
+                                                                    title="Kredit">Kredit</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/kredit/autokredit/"
+                                                                            title="Autokredit"><span>Autokredit</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/kredit/ratenkredit/"
+                                                                            title="Ratenkredit"><span>Ratenkredit</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/kredit/umschuldung/"
+                                                                            title="Umschuldung"><span>Umschuldung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/kredit/onlinekredit/"
+                                                                            title="Onlinekredit"><span>Onlinekredit</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/baufinanzierung/"
+                                                                    title="Baufinanzierung">Baufinanzierung</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/baufinanzierung/immobilienfinanzierung/"
+                                                                            title="Immobilienfinanzierung"><span>Immobilienfinanzierung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/baufinanzierung/anschlussfinanzierung/"
+                                                                            title="Anschlussfinanzierung"><span>Anschlussfinanzierung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/baufinanzierung/modernisierung/"
+                                                                            title="Modernisierung"><span>Modernisierung</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/kreditkarte/"
+                                                                    title="Kreditkarte">Kreditkarte</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://finanzen.check24.de/accounts/d/kreditkarte/result.html?hideTeaser=1&b2bid=50&cpid=checkbank&annualFee=FREE"
+                                                                            title="Karte ohne Jahresgebühr"><span>Karte
+                                                                                ohne Jahresgebühr</span></a></li>
+                                                                    <li><a href="https://finanzen.check24.de/accounts/d/kreditkarte/result.html?hideTeaser=1&b2bid=50&cpid=checkbank&additionalFeatures=abroadHealthInsurance"
+                                                                            title="Karte mit Versicherungen"><span>Karte
+                                                                                mit Versicherungen</span></a></li>
+                                                                    <li><a href="https://finanzen.check24.de/accounts/d/kreditkarte/result.html?hideTeaser=1&b2bid=50&cpid=checkbank&cardType=PREPAID"
+                                                                            title="Karte ohne SCHUFA"><span>Karte ohne
+                                                                                SCHUFA</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele c24-nav-border"> <a
+                                                                    class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/girokonto/"
+                                                                    title="Girokonto">Girokonto</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://finanzen.check24.de/accounts/d/girokonto/result.html?applicantNumber=ALL&minc=1.500"
+                                                                            title="Einzelkonto"><span>Einzelkonto</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://finanzen.check24.de/accounts/d/girokonto/result.html?applicantNumber=ONLY_FOR_TWO&minc=1500"
+                                                                            title="Gemeinschaftskonto"><span>Gemeinschaftskonto</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/geldanlage/"
+                                                                    title="Geldanlage">Geldanlage</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/tagesgeld/"
+                                                                            title="Tagesgeld"><span>Tagesgeld</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/festgeld/"
+                                                                            title="Festgeld"><span>Festgeld</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Services</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/kredit/bonitaetspruefung/"
+                                                                            title="BonitätsCheck"><span>BonitätsCheck</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/kredit/kreditrechner/"
+                                                                            title="Kreditrechner"><span>Kreditrechner</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/baufinanzierung/baufinanzierungsrechner/"
+                                                                            title="Baufinanzierungsrechner"><span>Baufinanzierungsrechner</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/baufinanzierung/immobilienbewertung/"
+                                                                            title="Immobilienbewertung"><span>Immobilienbewertung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://kontoumzug.check24.de/"
+                                                                            title="Kontoumzug"><span>Kontoumzug</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full"> <a
+                                                                href="https://kredit.check24.de/creditcenter/landingpage?linkedfrom=wf&openLogin=1"
+                                                                title="Kreditcenter"><span><strong>Kreditcenter</strong>
+                                                                    - Kreditanträge und Abschlüsse auf einen
+                                                                    Blick</span></a> </div>
+                                                        <div class="c24-subnav-ele-full last"> <a
+                                                                href="https://www.check24.de/geldanlagecenter/"
+                                                                title="Geldanlagecenter"><span><strong>Geldanlagecenter</strong>
+                                                                    - Ihr Zugang zu den besten Tages- und
+                                                                    Festgeld-Zinsen in Europa</span></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-strom"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://www.check24.de/strom-gas/"
+                                                        title="Strom & Gas"><span>Strom & Gas</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-nrg">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/strom/"
+                                                                    title="Stromvergleich">Stromvergleich</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/strom/"
+                                                                            title="Strom"><span>Strom</span></a></li>
+                                                                    <li><a href="https://www.check24.de/strom/oekostrom/"
+                                                                            title="Ökostrom"><span>Ökostrom</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/strom/gewerbestrom/"
+                                                                            title="Gewerbestrom"><span>Gewerbestrom</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/heizstrom/heizstromvergleich/"
+                                                                    title="Heizstrom">Heizstromvergleich</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/heizstrom/waermepumpe/"
+                                                                            title="Wärmepumpe"><span>Wärmepumpe</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/heizstrom/nachtspeicherheizung/"
+                                                                            title="Nachtspeicherheizung"><span>Nachtspeicherheizung</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele c24-nav-border"> <a
+                                                                    class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/gas/"
+                                                                    title="Gasvergleich">Gasvergleich</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/gas/"
+                                                                            title="Gas"><span>Gas</span></a></li>
+                                                                    <li><a href="https://www.check24.de/gas/oekogas/"
+                                                                            title="Ökogas"><span>Ökogas</span></a></li>
+                                                                    <li><a href="https://www.check24.de/gas/gewerbegas/"
+                                                                            title="Gewerbegas"><span>Gewerbegas</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/heizoel/"
+                                                                    title="Heizöl">Heizölvergleich</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/heizoel/"
+                                                                            title="Heizöl"><span>Heizöl</span></a></li>
+                                                                    <li><a href="https://www.check24.de/heizoel/heizoelpreise/"
+                                                                            title="Heizölpreise"><span>Heizölpreise</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Services</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://homecenter.check24.de/cancellation/manager/"
+                                                                            title="Energieverträge kündigen"><span>Energieverträge
+                                                                                kündigen</span></a></li>
+                                                                    <li><a href="https://www.check24.de/strom-gas/ratgeber/"
+                                                                            title="Energieratgeber"><span>Energieratgeber</span></a>
+                                                                    </li>
+                                                                </ul> <span class="c24-subnav-ele-title">Oder suchen
+                                                                    Sie...?</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/strom/autostromtarif/"
+                                                                            title="Autostromtarife"><span>Autostromtarife</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/strom-gas/energieanbieter/"
+                                                                            title="Energieanbieter"><span>Energieanbieter</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/strom-gas/ratgeber/energiepreisbremse/"
+                                                                            title="Energiepreisbremse"><span>Energiepreisbremse</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full"> <a
+                                                                href="https://homecenter.check24.de/"
+                                                                title="Haushaltscenter"><span><strong>Haushaltscenter</strong>
+                                                                    - Energie- und Internet-Verträge verwalten und
+                                                                    optimieren</span></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-internet"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://www.check24.de/internet/"
+                                                        title="Internet"><span>Internet</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-tel">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele c24-nav-border"
+                                                                style="width:230px;"> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/internet/"
+                                                                    title="Internet">Internet</a>
+                                                                <ul
+                                                                    class="c24-subnav-ele-list c24-nav-list-space-1 clearfix">
+                                                                    <li><a href="https://www.check24.de/internet/glasfaser/"
+                                                                            title="Glasfaser"><span>Glasfaser</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/dsl/"
+                                                                            title="DSL"><span>DSL</span></a></li>
+                                                                    <li><a href="https://www.check24.de/internet/kabel/"
+                                                                            title="Kabel"><span>Kabel</span></a></li>
+                                                                    <li><a href="https://www.check24.de/internet/internet-fernsehen/"
+                                                                            title="Internet & Fernsehen"><span>Internet
+                                                                                & Fernsehen</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Services</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/dsl/verfuegbarkeit/"
+                                                                            title="Verfügbarkeit prüfen"><span>Verfügbarkeit
+                                                                                prüfen</span></a></li>
+                                                                    <li><a href="https://www.check24.de/internet/kuendigen/"
+                                                                            title="Internetverträge kündigen"><span>Internetverträge
+                                                                                kündigen</span></a></li>
+                                                                    <li><a href="https://www.check24.de/internet/cashback-abholen/"
+                                                                            title="Cashback abholen"><span>Cashback
+                                                                                abholen</span></a></li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/internet/ratgeber/"
+                                                                    title="Ratgeber">Ratgeber</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full"> <a
+                                                                href="https://homecenter.check24.de/"
+                                                                title="Haushaltscenter"><span><strong>Haushaltscenter</strong>
+                                                                    - Internet- und Energieverträge verwalten und
+                                                                    optimieren</span></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-mobilfunk"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://handytarife.check24.de/lp/handy"
+                                                        title="Handy"><span>Handy</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-mof">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://handytarife.check24.de/"
+                                                                    title="Handytarife (nur SIM-Karte)">Handytarife (nur
+                                                                    SIM-Karte)</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://handytarife.check24.de/vergleich"
+                                                                            title="Handytarife-Vergleich"><span>Handytarife-Vergleich</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://handytarife.check24.de/lp/monats-tarife"
+                                                                            title="Monatlich kündbare Tarife"><span>Monatlich
+                                                                                kündbare Tarife</span></a></li>
+                                                                    <li><a href="https://handytarife.check24.de/lp/esim"
+                                                                            title="eSIM Tarife"><span>eSIM
+                                                                                Tarife</span></a></li>
+                                                                    <li><a href="https://handytarife.check24.de/lp/unbegrenzt"
+                                                                            title="Unlimited Tarife"><span>Unlimited
+                                                                                Tarife</span></a></li>
+                                                                    <li><a href="https://handytarife.check24.de/vergleich/prepaid"
+                                                                            title="Prepaid Tarife"><span>Prepaid
+                                                                                Tarife</span></a></li>
+                                                                    <li><a href="https://handytarife.check24.de/vergleich/allnet-flat"
+                                                                            title="Allnet Flat Tarife"><span>Allnet Flat
+                                                                                Tarife</span></a></li>
+                                                                    <li><a href="https://handytarife.check24.de/vergleich/datentarife"
+                                                                            title="Datentarife"><span>Datentarife</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele c24-nav-border"> <a
+                                                                    class="c24-subnav-ele-title"
+                                                                    href="https://handyvertrag.check24.de/"
+                                                                    title="Handy mit Vertrag">Handy mit Vertrag</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://handyvertrag.check24.de/vergleich/iphone-15"
+                                                                            title="iPhone 15 mit Vertrag"><span>iPhone
+                                                                                15 mit Vertrag</span></a></li>
+                                                                    <li><a href="https://handyvertrag.check24.de/vergleich/iphone-15-pro"
+                                                                            title="iPhone 15 Pro mit Vertrag"><span>iPhone
+                                                                                15 Pro mit Vertrag</span></a></li>
+                                                                    <li><a href="https://handyvertrag.check24.de/vergleich/iphone-14"
+                                                                            title="iPhone 14 mit Vertrag"><span>iPhone
+                                                                                14 mit Vertrag</span></a></li>
+                                                                    <li><a href="https://handyvertrag.check24.de/vergleich/iphone-14-pro"
+                                                                            title="iPhone 14 Pro mit Vertrag"><span>iPhone
+                                                                                14 Pro mit Vertrag</span></a></li>
+                                                                    <li><a href="https://handyvertrag.check24.de/vergleich/samsung-galaxy-s23"
+                                                                            title="Galaxy S23 mit Vertrag"><span>Galaxy
+                                                                                S23 mit Vertrag</span></a></li>
+                                                                    <li><a href="https://handyvertrag.check24.de/vergleich/samsung-galaxy-s23-ultra"
+                                                                            title="Galaxy S23 Ultra mit Vertrag"><span>Galaxy
+                                                                                S23 Ultra mit Vertrag</span></a></li>
+                                                                    <li><a href="https://handyvertrag.check24.de/handy-uebersicht"
+                                                                            title="Handyübersicht"><span>Handyübersicht</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Services</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://handyvertrag.check24.de/kuendigen/vertragsdaten?cancellationLinkoutContext=frm"
+                                                                            title="Handyverträge kündigen"><span>Handyverträge
+                                                                                kündigen</span></a></li>
+                                                                    <li><a href="https://handyvertrag.check24.de/cashback/abholen"
+                                                                            title="Cashback abholen"><span>Cashback
+                                                                                abholen</span></a></li>
+                                                                    <li><a href="https://handytarife.check24.de/lp/rufnummernmitnahme"
+                                                                            title="Rufnummer mitnehmen"><span>Rufnummer
+                                                                                mitnehmen</span></a></li>
+                                                                    <li><a href="https://handytarife.check24.de/anbieter"
+                                                                            title="Anbieterübersicht"><span>Anbieterübersicht</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/handyversicherung/"
+                                                                            title="Handyversicherung"><span>Handyversicherung</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-travel"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://urlaub.check24.de/"
+                                                        title="Reise"><span>Reise</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-pau">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://urlaub.check24.de/"
+                                                                    title="Pauschalreisen">Pauschalreisen</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://urlaub.check24.de/"
+                                                                            title="Urlaubsreisen"><span>Urlaubsreisen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/fruehbucher"
+                                                                            title="Frühbucher"><span>Frühbucher</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/lastminute"
+                                                                            title="Last Minute"><span>Last
+                                                                                Minute</span></a></li>
+                                                                    <li><a href="https://urlaub.check24.de/allinclusive"
+                                                                            title="All Inclusive"><span>All
+                                                                                Inclusive</span></a></li>
+                                                                    <li><a href="https://urlaub.check24.de/staedtereisen"
+                                                                            title="Städtereisen"><span>Städtereisen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/themenwelten/familienurlaub"
+                                                                            title="Familienurlaub"><span>Familienurlaub</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://urlaub.check24.de/reisen"
+                                                                    title="Beliebte Ziele">Beliebte Ziele</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://urlaub.check24.de/reisen/tuerkei"
+                                                                            title="Türkei"><span>Türkei</span></a></li>
+                                                                    <li><a href="https://urlaub.check24.de/reisen/aegypten"
+                                                                            title="Ägypten"><span>Ägypten</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/reisen/spanien/mallorca"
+                                                                            title="Mallorca"><span>Mallorca</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/reisen/griechenland"
+                                                                            title="Griechenland"><span>Griechenland</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/reisen/spanien/kanaren"
+                                                                            title="Kanaren"><span>Kanaren</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/reisen/malediven"
+                                                                            title="Malediven"><span>Malediven</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://individualreisen.check24.de"
+                                                                    title="Sportreisen"><span>Sportreisen</span></a>
+                                                                <ul class="c24-subnav-ele-list c24-subnav-ele-list-new">
+                                                                    <li><a href="https://individualreisen.check24.de/tauchen"
+                                                                            title="Tauchen"><span>Tauchen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://individualreisen.check24.de/surfen"
+                                                                            title="Surfen"><span>Surfen</span></a></li>
+                                                                    <li><a href="https://individualreisen.check24.de/kitesurfen"
+                                                                            title="Kitesurfen"><span>Kitesurfen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://individualreisen.check24.de/windsurfen"
+                                                                            title="Windsurfen"><span>Windsurfen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://individualreisen.check24.de/wingfoilen"
+                                                                            title="Wingfoilen"><span>Wingfoilen</span></a>
+                                                                    </li>
+                                                                    <li class="c24-subnav-ele-listitem-new"><a
+                                                                            href="https://individualreisen.check24.de/golfen"
+                                                                            title="Golfen"><span>Golfen</span><span
+                                                                                class="c24-subnav-ele-new">Neu</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele c24-nav-border"> <a
+                                                                    class="c24-subnav-ele-title"
+                                                                    href="https://ferienwohnung.check24.de/"
+                                                                    title="Ferienwohnungen & Ferienhäuser">Ferienwohnungen
+                                                                    & Ferienhäuser</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://ferienwohnung.check24.de/"
+                                                                            title="Ferienwohnungen"><span>Ferienwohnungen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://ferienwohnung.check24.de/ferienhaus"
+                                                                            title="Ferienhäuser"><span>Ferienhäuser</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/reiseversicherung/"
+                                                                    title="Reiseversicherungen">Reiseversicherungen</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://www.check24.de/reiseruecktrittsversicherung/"
+                                                                            title="Reiserücktrittsversicherung"><span>Reiserücktrittsversicherung</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://www.check24.de/auslandskrankenversicherung/"
+                                                                            title="Auslandskrankenversicherung"><span>Auslandskrankenversicherung</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Services</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://urlaub.check24.de/service/faq"
+                                                                            title="Häufige Fragen"><span>Häufige
+                                                                                Fragen</span></a></li>
+                                                                    <li><a href="https://urlaub.check24.de/service/zahlungsmoeglichkeiten"
+                                                                            title="Zahlungsmöglichkeiten"><span>Zahlungsmöglichkeiten</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/reisewelt"
+                                                                            title="Reisewelt Magazin"><span>Reisewelt
+                                                                                Magazin</span></a></li>
+                                                                    <li><a href="https://urlaub.check24.de/reisekalender"
+                                                                            title="Reisekalender"><span>Reisekalender</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://urlaub.check24.de/urlaubsfinder"
+                                                                            title="Urlaubsfinder"><span>Urlaubsfinder</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full c24-subnav-ele-goldclub"> <a
+                                                                href="https://www.check24.de/reisegoldclub"
+                                                                title="Reise GoldClub"><span
+                                                                    class="c24-rsnmwa-goldclub">Reise
+                                                                    <strong>GoldClub</strong></span> - Exklusive
+                                                                Vorteile für Mitglieder</a> </div>
+                                                        <div class="c24-subnav-ele-full last"> <a
+                                                                href="https://kundenbereich.check24.de/?o=travels"
+                                                                title="Reisecenter"><span><strong>Reisecenter</strong> -
+                                                                    Ihre Buchungen bequem verwalten</span></a> </div>
+                                                        <div class="c24-subnav-ele-full last"> <a
+                                                                href="https://community.check24.de/"
+                                                                title="Reise Community"><span><strong>Reise
+                                                                        Community</strong> - Fragen stellen, Tipps
+                                                                    erhalten, Erlebnisse teilen, Chats mit Reisenden vor
+                                                                    Ort</span></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-flights"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://flug.check24.de/"
+                                                        title="Flüge"><span>Flüge</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-flu">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://flug.check24.de/"
+                                                                    title="Flugvergleich">Flugvergleich</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://flug.check24.de/"
+                                                                            title="Flüge"><span>Flüge</span></a></li>
+                                                                    <li><a href="https://flug.check24.de/fluege/london"
+                                                                            title="Flüge London"><span>Flüge
+                                                                                London</span></a></li>
+                                                                    <li><a href="https://flug.check24.de/fluege/mallorca"
+                                                                            title="Flüge Mallorca"><span>Flüge
+                                                                                Mallorca</span></a></li>
+                                                                    <li><a href="https://flug.check24.de/fluege/rom"
+                                                                            title="Flüge Rom"><span>Flüge Rom</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele c24-nav-border"> <span
+                                                                    class="c24-subnav-ele-title"> </span>
+                                                                <ul class="c24-subnav-ele-list c24-nav-list-space-1">
+                                                                    <li><a href="https://flug.check24.de/billigfluege"
+                                                                            title="Billigflüge"><span>Billigflüge</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://flug.check24.de/lastminute"
+                                                                            title="Last Minute Flüge"><span>Last Minute
+                                                                                Flüge</span></a></li>
+                                                                    <li><a href="https://flug.check24.de/fluege/tuerkei"
+                                                                            title="Flüge Türkei"><span>Flüge
+                                                                                Türkei</span></a></li>
+                                                                    <li><a href="https://flug.check24.de/fluege/usa"
+                                                                            title="Flüge USA"><span>Flüge USA</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Services</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://flug.check24.de/service"
+                                                                            title="Häufige Fragen"><span>Häufige
+                                                                                Fragen</span></a></li>
+                                                                    <li><a href="https://flug.check24.de/service/flugverspaetung"
+                                                                            title="Flugverspätung - Ihre Rechte"><span>Flugverspätung
+                                                                                - Ihre Rechte</span></a></li>
+                                                                    <li><a href="https://flug.check24.de/service/umbuchen-stornieren"
+                                                                            title="Umbuchen & Stornieren"><span>Umbuchen
+                                                                                & Stornieren</span></a></li>
+                                                                    <li><a href="https://flug.check24.de/service/flug-buchen-ohne-kreditkarte"
+                                                                            title="Buchen ohne Kreditkarte"><span>Buchen
+                                                                                ohne Kreditkarte</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full c24-subnav-ele-goldclub"> <a
+                                                                href="https://www.check24.de/reisegoldclub?flug"
+                                                                title="Reise GoldClub"><span
+                                                                    class="c24-rsnmwa-goldclub">Reise
+                                                                    <strong>GoldClub</strong></span> - Exklusive
+                                                                Vorteile für Mitglieder</a> </div>
+                                                        <div class="c24-subnav-ele-full last"> <a
+                                                                href="https://kundenbereich.check24.de/?o=travels"
+                                                                title="Reisecenter"><span><strong>Reisecenter</strong> -
+                                                                    Ihre Buchungen bequem verwalten</span></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-comparison"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://hotel.check24.de/"
+                                                        title="Hotel"><span>Hotel</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-hot">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://hotel.check24.de/"
+                                                                    title="Hotelvergleich">Hotelvergleich</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://hotel.check24.de/"
+                                                                            title="Hotels"><span>Hotels</span></a></li>
+                                                                    <li><a href="https://hotel.check24.de/city/germany/berlin-40784"
+                                                                            title="Hotels Berlin"><span>Hotels
+                                                                                Berlin</span></a></li>
+                                                                    <li><a href="https://hotel.check24.de/city/germany/munich-37463"
+                                                                            title="Hotels München"><span>Hotels
+                                                                                München</span></a></li>
+                                                                    <li><a href="https://hotel.check24.de/city/germany/hamburg-39078"
+                                                                            title="Hotels Hamburg"><span>Hotels
+                                                                                Hamburg</span></a></li>
+                                                                    <li><a href="https://hotel.check24.de/country/germany-10"
+                                                                            title="Hotels Deutschland"><span>Hotels
+                                                                                Deutschland</span></a></li>
+                                                                    <li><a href="https://hotel.check24.de/wellnesshotels"
+                                                                            title="Wellnesshotels"><span>Wellnesshotels</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://ferienwohnung.check24.de/"
+                                                                    title="Ferienwohnungen">Ferienwohnungen</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://ferienwohnung.check24.de/reiseziele/deutschland/ostsee"
+                                                                            title="Ferienwohnung Ostsee"><span>Ferienwohnung
+                                                                                Ostsee</span></a></li>
+                                                                    <li><a href="https://ferienwohnung.check24.de/reiseziele/kroatien"
+                                                                            title="Ferienwohnung Kroatien"><span>Ferienwohnung
+                                                                                Kroatien</span></a></li>
+                                                                    <li><a href="https://ferienwohnung.check24.de/hund"
+                                                                            title="Ferienwohnung mit Hund"><span>Ferienwohnung
+                                                                                mit Hund</span></a></li>
+                                                                    <li><a href="https://ferienwohnung.check24.de/ferienhaus"
+                                                                            title="Ferienhäuser"><span>Ferienhäuser</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://ferienwohnung.check24.de/reiseziele/spanien/mallorca"
+                                                                            title="Finca Mallorca"><span>Finca
+                                                                                Mallorca</span></a></li>
+                                                                    <li><a href="https://ferienwohnung.check24.de/reiseziele/daenemark"
+                                                                            title="Ferienhaus Dänemark"><span>Ferienhaus
+                                                                                Dänemark</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full c24-subnav-ele-goldclub"> <a
+                                                                href="https://www.check24.de/reisegoldclub?hotel"
+                                                                title="Reise GoldClub"><span
+                                                                    class="c24-rsnmwa-goldclub">Reise
+                                                                    <strong>GoldClub</strong></span> - Exklusive
+                                                                Vorteile für Mitglieder</a> </div>
+                                                        <div class="c24-subnav-ele-full last"> <a
+                                                                href="https://kundenbereich.check24.de/?o=travels"
+                                                                title="Reisecenter"><span><strong>Reisecenter</strong> -
+                                                                    Ihre Buchungen bequem verwalten</span></a> </div>
+                                                        <div class="c24-subnav-ele-full last"> <a
+                                                                href="https://community.check24.de/"
+                                                                title="Reise Community"><span><strong>Reise
+                                                                        Community</strong> - Fragen, Tipps, Erlebnisse,
+                                                                    Chats</span></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-price-comparison"> <a
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        href="https://mietwagen.check24.de/"
+                                                        title="Mietwagen"><span>Mietwagen</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-mwa">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele c24-nav-border"> <a
+                                                                    class="c24-subnav-ele-title"
+                                                                    href="https://mietwagen.check24.de/"
+                                                                    title="Mietwagen Preisvergleich">Mietwagen
+                                                                    Preisvergleich</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://mietwagen.check24.de/"
+                                                                            title="Mietwagen"><span>Mietwagen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://mietwagen.check24.de/mietwagen/deutschland"
+                                                                            title="Mietwagen Deutschland"><span>Mietwagen
+                                                                                Deutschland</span></a></li>
+                                                                    <li><a href="https://mietwagen.check24.de/mietwagen/spanien"
+                                                                            title="Mietwagen Spanien"><span>Mietwagen
+                                                                                Spanien</span></a></li>
+                                                                    <li><a href="https://mietwagen.check24.de/mietwagen/portugal"
+                                                                            title="Mietwagen Portugal"><span>Mietwagen
+                                                                                Portugal</span></a></li>
+                                                                    <li><a href="https://mietwagen.check24.de/mietwagen/usa"
+                                                                            title="Mietwagen USA"><span>Mietwagen
+                                                                                USA</span></a></li>
+                                                                    <li><a href="https://mietwagen.check24.de/mietwagen/spanien/mallorca"
+                                                                            title="Mietwagen Mallorca"><span>Mietwagen
+                                                                                Mallorca</span></a></li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://mietwagen.check24.de/transporter"
+                                                                    title="Transporter mieten">Transporter mieten</a> <a
+                                                                    class="c24-subnav-ele-title c24-subnav-ele-listitem-new"
+                                                                    href="https://camper.check24.de/"
+                                                                    title="Wohnmobil mieten">Wohnmobil mieten<span
+                                                                        class="c24-subnav-ele-new">Neu</span></a>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Services</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://mietwagen.check24.de/service"
+                                                                            title="Häufige Fragen"><span>Häufige
+                                                                                Fragen</span></a></li>
+                                                                    <li><a href="https://mietwagen.check24.de/jumpin?source=self_service&type=booking"
+                                                                            title="Buchung stornieren"><span>Buchung
+                                                                                stornieren</span></a></li>
+                                                                    <li><a href="https://mietwagen.check24.de/jumpin?source=self_service&type=voucher"
+                                                                            title="Voucher herunterladen"><span>Voucher
+                                                                                herunterladen</span></a></li>
+                                                                    <li><a href="https://mietwagen.check24.de/autovermietung"
+                                                                            title="Vermieterbewertungen"><span>Vermieterbewertungen</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full c24-subnav-ele-goldclub"> <a
+                                                                href="https://www.check24.de/reisegoldclub?mietwagen"
+                                                                title="Reise GoldClub"><span
+                                                                    class="c24-rsnmwa-goldclub">Reise
+                                                                    <strong>GoldClub</strong></span> - Exklusive
+                                                                Vorteile für Mitglieder</a> </div>
+                                                        <div class="c24-subnav-ele-full last"> <a
+                                                                href="https://kundenbereich.check24.de/?o=travels"
+                                                                title="Reisecenter"><span><strong>Reisecenter</strong> -
+                                                                    Ihre Buchungen bequem verwalten</span></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-event"> <a
+                                                        class="c24-nav-ele-title c24-header-hover  c24-current"
+                                                        href="https://www.check24.de/profis/"
+                                                        title="Profis"><span>Profis</span></a>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-ask">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://events.check24.de/events/event"
+                                                                    title="Veranstaltungen & Events">Veranstaltungen</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://events.check24.de/events/dj"
+                                                                            title="DJ"><span>DJ</span></a></li>
+                                                                    <li><a href="https://events.check24.de/events/fotografie-videografie"
+                                                                            title="Fotograf"><span>Fotograf</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://events.check24.de/events/hochzeit"
+                                                                    title="Hochzeit">Hochzeit</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://events.check24.de/events/hochzeitsfotograf"
+                                                                            title="Hochzeitsfotograf"><span>Hochzeitsfotograf</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://events.check24.de/events/brautstylist"
+                                                                            title="Brautstylist"><span>Brautstylist</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://umzug.check24.de/ul/umzug/umzug-transport"
+                                                                    title="Umzug & Transport">Umzug & Transport</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://umzug.check24.de/ul/umzug/umzugsunternehmen"
+                                                                            title="Umzugsunternehmen"><span>Umzugsunternehmen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://umzug.check24.de/ul/umzug/moebeltransport"
+                                                                            title="Möbeltransport"><span>Möbeltransport</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://unterricht.check24.de/lessons/fitness"
+                                                                    title="Sport & Wellness">Sport & Wellness</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://unterricht.check24.de/lessons/personal-training"
+                                                                            title="Personal Trainer"><span>Personal
+                                                                                Trainer</span></a></li>
+                                                                    <li><a href="https://unterricht.check24.de/lessons/ernaehrungsberatung"
+                                                                            title="Ernährungsberater"><span>Ernährungsberater</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <span
+                                                                    class="c24-subnav-ele-title">Haus & Garten</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://handwerk.check24.de/craftsmen/gaertner"
+                                                                            title="Gärtner"><span>Gärtner</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://handwerk.check24.de/craftsmen/monteur"
+                                                                            title="Monteure"><span>Monteure</span></a>
+                                                                    </li>
+                                                                </ul> <span class="c24-subnav-ele-title">Sprach- &
+                                                                    Musiklehrer</span>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://unterricht.check24.de/lessons/sprachunterricht"
+                                                                            title="Sprachlehrer"><span>Sprachlehrer</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://unterricht.check24.de/lessons/musikunterricht"
+                                                                            title="Musiklehrer"><span>Musiklehrer</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://handwerk.check24.de/craftsmen/handwerker"
+                                                                    title="Handwerk">Handwerk</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://handwerk.check24.de/craftsmen/maler-tapezierer"
+                                                                            title="Maler"><span>Maler</span></a></li>
+                                                                    <li><a href="https://handwerk.check24.de/craftsmen/elektriker"
+                                                                            title="Elektriker"><span>Elektriker</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://handwerk.check24.de/craftsmen/bodenleger"
+                                                                            title="Bodenleger"><span>Bodenleger</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://handwerk.check24.de/craftsmen/installateur-heizungsbauer"
+                                                                            title="Installateure"><span>Installateure</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://www.check24.de/profis/"
+                                                                    title="Alle Kategorien">Alle Kategorien...</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c24-subnav-ele-full"> <a
+                                                                href="https://profis.check24.de/unternehmen"><span>Sie
+                                                                    sind selbst Profi und auf der Suche nach neuen
+                                                                    Kunden? <span>Jetzt anmelden</span></span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-shopping"> <span
+                                                        class="c24-nav-ele-title c24-header-hover "
+                                                        title="Shopping"><span>Shopping</span></span>
+                                                    <div class="c24-subnav c24-hover-layer clearfix" id="c24-sho">
+                                                        <div class="c24-subnav-ele-wrapper clearfix">
+                                                            <div class="c24-subnav-ele"> <a
+                                                                    href="https://moebel.check24.de/" title="Möbel"
+                                                                    class="c24-subnav-ele-title">Möbel</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://moebel.check24.de/vergleichen/wohnzimmer"
+                                                                            title="Wohnzimmer"><span>Wohnzimmer</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://moebel.check24.de/vergleichen/esszimmer"
+                                                                            title="Esszimmer"><span>Esszimmer</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://moebel.check24.de/vergleichen/schlafzimmer"
+                                                                            title="Schlafzimmer"><span>Schlafzimmer</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://moebel.check24.de/vergleichen/arbeitszimmer"
+                                                                            title="Arbeitszimmer"><span>Arbeitszimmer</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://preisvergleich.check24.de/ul/lp/haushalt-und-wohnen"
+                                                                    title="Haushalt">Haushalt</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/kaffeevollautomaten/"
+                                                                            title="Kaffeevollautomaten"><span>Kaffeevollautomaten</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/staubsauger-roboter/"
+                                                                            title="Staubsauger-Roboter"><span>Staubsauger-Roboter</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/kuehlschraenke/"
+                                                                            title="Kühlschränke"><span>Kühlschränke</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a
+                                                                    href="https://reifen.check24.de/" title="Autoreifen"
+                                                                    class="c24-subnav-ele-title">Autoreifen</a>
+                                                                <ul class="c24-subnav-ele-list c24-nav-list-space-1">
+                                                                    <li><a href="https://reifen.check24.de/sommerreifen"
+                                                                            title="Sommerreifen"><span>Sommerreifen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://reifen.check24.de/ganzjahresreifen"
+                                                                            title="Ganzjahresreifen"><span>Ganzjahresreifen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://reifen.check24.de/winterreifen"
+                                                                            title="Winterreifen"><span>Winterreifen</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://preisvergleich.check24.de/ul/lp/baumarkt-und-garten"
+                                                                    title="Baumarkt">Baumarkt</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/akkuschrauber/"
+                                                                            title="Akkuschrauber"><span>Akkuschrauber</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/grills/"
+                                                                            title="Grills"><span>Grills</span></a></li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/maehroboter/"
+                                                                            title="Mähroboter"><span>Mähroboter</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a class="c24-subnav-ele-title"
+                                                                    href="https://komplettrad.check24.de/"
+                                                                    title="Reifen mit Felgen"><span>Reifen mit
+                                                                        Felgen</span></a>
+                                                                <ul class="c24-subnav-ele-list c24-nav-list-space-2">
+                                                                    <li><a href="https://komplettrad.check24.de/"
+                                                                            title="Reifen mit Stahlfelgen"><span>Reifen
+                                                                                mit Stahlfelgen</span></a></li>
+                                                                    <li><a href="https://komplettrad.check24.de/"
+                                                                            title="Reifen mit Alufelgen"><span>Reifen
+                                                                                mit Alufelgen</span></a></li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://preisvergleich.check24.de/ul/lp/beauty"
+                                                                    title="Beauty">Beauty</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/elektrische-zahnbuersten/"
+                                                                            title="Elektrische Zahnbürsten"><span>Elektrische
+                                                                                Zahnbürsten</span></a></li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/bartschneider/"
+                                                                            title="Bartschneider"><span>Bartschneider</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/glaetteisen/"
+                                                                            title="Glätteisen"><span>Glätteisen</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele c24-nav-border"> <a
+                                                                    class="c24-subnav-ele-title"
+                                                                    href="https://preisvergleich.check24.de/ul/lp/elektronik-und-computer"
+                                                                    title="Elektronik">Elektronik</a>
+                                                                <ul class="c24-subnav-ele-list c24-nav-list-space-1">
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/smartphones/"
+                                                                            title="Smartphones"><span>Smartphones</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/laptops/"
+                                                                            title="Laptops"><span>Laptops</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/fernseher"
+                                                                            title="Fernseher"><span>Fernseher</span></a>
+                                                                    </li>
+                                                                </ul> <a class="c24-subnav-ele-title"
+                                                                    href="https://preisvergleich.check24.de/ul/lp/baby-und-spielzeug"
+                                                                    title="Baby & Spielzeug">Baby & Spielzeug</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/kinderwagen/"
+                                                                            title="Kinderwagen"><span>Kinderwagen</span></a>
+                                                                    </li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/lego/"
+                                                                            title="LEGO"><span>LEGO</span></a></li>
+                                                                    <li><a href="https://preisvergleich.check24.de/ul/babyphones/"
+                                                                            title="Babyphones"><span>Babyphones</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="c24-subnav-ele"> <a
+                                                                    href="https://kundenbereich.check24.de/"
+                                                                    title="Services"
+                                                                    class="c24-subnav-ele-title">Services</a>
+                                                                <ul class="c24-subnav-ele-list">
+                                                                    <li><a href="https://kundenbereich.check24.de/?o=shopping"
+                                                                            title="Meine Bestellungen"><span>Meine
+                                                                                Bestellungen</span></a></li>
+                                                                    <li><a href="https://kundenbereich.check24.de/?o=lists"
+                                                                            title="Mein Merkzettel"><span>Mein
+                                                                                Merkzettel</span></a></li>
+                                                                    <li><a href="https://kundenbereich.check24.de/user/account.html?o=alarm"
+                                                                            title="Mein Preisalarme"><span>Meine
+                                                                                Preisalarme</span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c24-nav-ele c24-nav-tax"> <a
+                                                        class="c24-nav-ele-title c24-nav-direct last "
+                                                        href="https://steuer.check24.de/"
+                                                        title="Steuer"><span>Steuer</span></a> </div>
+                                            </div>
+                                        </div>
+                                    </nav> <a class="c24-points-msg"
+                                        href="https://kundenbereich.check24.de/user/account.html?o=points"
+                                        title="Jetzt Punkteteilnehmer werden: 5 € sichern"> <span>Jetzt
+                                        </span>Punkteteilnehmer werden: <strong>5 € sichern</strong> </a>
+                                    <div class="c24-sustainability-ele"> <a
+                                            href="https://www.check24.de/unternehmen/nachhaltigkeit/"
+                                            title="Nachhaltigkeit"><span>Nachhaltigkeit</span></a> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+        <div class="c24-page-container" id="c24-page-container-content">
+            <div id="c24-page-content" class="c24-page">
+                <div id="c24-content" class="clearfix">
+                    <main>
+
+                        <body class="md:bg-gray-50">
+                            <div class="bg-white max-w-screen-md md:shadow-md mx-auto rounded-md">
+                                <nav class="justify-between max-w-screen-md flex flex-wrap md:rounded-md md:mt-8">
+                                    <h1 class="font-extrabold text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">Search for Craftmen
+                                    </h1>
+                                    <ul class="flex space-x-4 p-4 pr-8 self-center sm:m-0 m-auto">
+                                        <a href="{{ url_for('auth.search') }}">
+                                        </a>
+                                    </ul>
+                                </nav>
+                                <section class="max-w-screen-md mx-auto pt-8 pb-8">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="text-center">{{ message }}</div>
+                                    {% endfor %} {% block content %}{% endblock %}
+                                </section>
+                            </div>
+                        </body>
+
+                        <footer>
+                            <div class="c24-page-container" id="c24-page-container-footer">
+                                <div class="c24-page">
+                                    <footer class="c24-footer ">
+                                        <div id="c24-footer">
+                                            <div class="c24-footer-top">
+                                                <div class="c24-footer-content clearfix">
+                                                    <div class="c24-footer-jumptotop">zurück zum Seitenanfang</div>
+                                                    <!-- EMBED:FOOTER_TOP_LINKS_START -->
+                                                    <div class="c24-footer-links-wrapper">
+                                                        <div class="c24-footer-links">
+                                                            <ul>
+                                                                <li>Über CHECK24</li>
+                                                                <li><a href="https://jobs.check24.de/"
+                                                                        title="Karriere bei CHECK24">Karriere bei
+                                                                        CHECK24</a></li>
+                                                                <li><a href="https://www.check24.de/news/"
+                                                                        title="News">News</a></li>
+                                                                <li><a href="https://www.check24.de/unternehmen/presse/"
+                                                                        title="Presse">Presse</a></li>
+                                                                <li><a href="https://www.check24.de/unternehmen/"
+                                                                        title="Unternehmen">Unternehmen</a></li>
+                                                                <li><a href="https://www.check24.at/"
+                                                                        title="CHECK24 Österreich">CHECK24
+                                                                        Österreich</a></li>
+                                                                <li><a href="https://www.check24.es/"
+                                                                        title="CHECK24 Spanien">CHECK24
+                                                                        Spanien</a></li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li>Geld verdienen mit CHECK24</li>
+                                                                <li><a href="https://www.check24.de/partner/"
+                                                                        title="Partner">Partner</a></li>
+                                                                <li><a href="https://www.check24.de/partner/marktplatz-partner/"
+                                                                        title="Shopping-Marktplatz Partner">Shopping-Marktplatz
+                                                                        Partner</a></li>
+                                                                <li><a href="https://profis.check24.de/unternehmen"
+                                                                        title="Profis">Profis</a>
+                                                                </li>
+                                                                <li><a href="https://www.check24.de/partner/partnerprogramm/"
+                                                                        title="Affiliate-Programm">Affiliate-Programm</a>
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li>Unser Engagement</li>
+                                                                <li><a href="https://www.check24.de/unternehmen/nachhaltigkeit/"
+                                                                        title="Nachhaltigkeit">Nachhaltigkeit</a></li>
+                                                                <li><a href="https://www.check24-hilft.org/category/kinder"
+                                                                        title="CHECK24 hilft Kindern">CHECK24
+                                                                        <i>hilft</i> Kindern</a></li>
+                                                                <li><a href="https://www.check24-hilft.org/category/umwelt"
+                                                                        title="CHECK24 hilft der Natur">CHECK24
+                                                                        <i>hilft</i> der Natur</a></li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li>Wir helfen Ihnen</li>
+                                                                <li><a class="c24-footer-link-contact"
+                                                                        href="https://www.check24.de/unternehmen/kontakt/"
+                                                                        title="Hilfe und Kontakt">Hilfe und Kontakt</a>
+                                                                </li>
+                                                                <li><a href="https://www.check24.de/app/"
+                                                                        title="CHECK24 App">CHECK24 App</a>
+                                                                </li>
+                                                                <li><a href="https://www.check24.de/gutschein/"
+                                                                        title="CHECK24 Gutscheine">CHECK24
+                                                                        Gutscheine</a></li>
+                                                                <li><a href="https://kundenbereich.check24.de/user/account.html?o=points"
+                                                                        title="CHECK24 Punkte">CHECK24 Punkte</a></li>
+                                                                <li><a href="https://www.check24.de/internet/cashback-abholen/"
+                                                                        title="CHECK24 Cashback">CHECK24 Cashback</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div> <!-- EMBED:FOOTER_TOP_LINKS_END -->
+                                                </div>
+                                            </div>
+                                            <div class="c24-footer-bottom">
+                                                <div class="c24-footer-content clearfix">
+                                                    <div class="c24-footer-logo-wrapper"> <a class="c24-footer-logo"
+                                                            href="https://www.check24.de/"
+                                                            title="CHECK24 - Deutschlands größtes Vergleichsportal"></a>
+                                                    </div>
+                                                    <div class="c24-footer-bottom-links">
+                                                        <ul>
+                                                            <li class="c24-footer-slim-item c24-footer-link-contact"><a
+                                                                    href="https://www.check24.de/unternehmen/kontakt/"
+                                                                    title="Kontakt">Kontakt</a></li>
+                                                            <li><a class="c24-footer-link-conditions"
+                                                                    href="//profis.check24.de/agb"
+                                                                    title="Unsere AGB">Unsere AGB</a></li>
+                                                            <li><a class="c24-footer-link-privacy"
+                                                                    href="//profis.check24.de/datenschutz"
+                                                                    title="Datenschutz">Datenschutz</a></li>
+                                                            <li><a class="c24-footer-link-imprint"
+                                                                    href="https://www.check24.de/unternehmen/impressum/#comp27"
+                                                                    title="Impressum">Impressum</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="c24-footer-copyright"> <span>© 2023 CHECK24
+                                                            Vergleichsportal Profis GmbH.</span>
+                                                        <span>Alle Inhalte unterliegen unserem Copyright.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                </div>
+                            </div>
+                </div>
+                <script
+                    type="text/javascript">window.data = window.data || {}; window.data['sentry'] = { "dsn": "https:\/\/9ddf580aa48d444d8199bf5561fb911d@sentry.profis.check24.de\/32", "release": "20231117-152703", "environment": "prod", "allowUrls": ["https?:\\\/\\\/(.+\\.)?check24\\.de"] };</script>
+                <script src="https://assets.handwerk.check24.de/build/cs-landingpage/lp-category-desktop.1a1ab666.js"
+                    defer></script>
+                <script type="text/javascript"
+                    src="https://wireframe.check24.de/2023-1-23/assets/desktop/wireframe.min.js"></script>
+                <script>
+                </script>
+                <!-- <script>
+Check24.uliloginlayer.config.env = "prod";
+Check24.uliloginlayer.init({
+    "deviceoutput": "desktop",
+    "api_product": "lsehan",
+    "login_email": "Jupelzer@outlook.de",                "social_login_base_url": "//kundenbereich.check24.de/",
+});
+
+Check24.uliloginlayer.closeAfter = function() {
+    window.location.reload();
+};
+</script> -->
+                <!-- Google Tag Manager (noscript) --><noscript><iframe
+                        src="https://www.googletagmanager.com/ns.html?id=GTM-MTCXBRS" height="0" width="0"
+                        style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->
+                </footer>

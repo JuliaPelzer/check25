@@ -1,11 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<!-- <script
+type="text/javascript">window.data = window.data || {}; window.data['sentry'] = { "dsn": "https:\/\/9ddf580aa48d444d8199bf5561fb911d@sentry.profis.check24.de\/32", "release": "20231117-152703", "environment": "prod", "allowUrls": ["https?:\\\/\\\/(.+\\.)?check24\\.de"] };</script>
+<script
+type="text/javascript">window.data = window.data || {}; window.data['pageData'] = { "title": "Handwerker", "rating": 5.0, "coverageRoute": "\/craftsmen\/api\/postcode-coverage\/craftsmen_service_tiling", "nextRoute": "\/craftsmen\/cs\/desktop\/journey\/web\/tiling\/questionnaire" };</script>
+<script
+type="text/javascript">window.data = window.data || {}; window.data['gratificationBar'] = { "isUserLoggedIn": true, "isPointsUser": true, "forceHide": false, "defaultPoints": 100, "enquiryPoints": null, "voucher": { "amountInCents": 1000, "expiresAt": "2023-12-31T00:00:00+01:00", "minimalAmountInCents": 1500 } };</script>
+<script src="https://assets.handwerk.check24.de/build/cs/runtime.3c11c72d.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/cs-vendor.a0d5a367.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/49442.e9b84662.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/58999.9127dce2.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/90845.ed40c08d.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/37313.62b47ec8.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/12453.3fd75fe3.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/10077.8106aeb8.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/81222.69fb6a46.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/14973.55f9227c.js" defer></script>
+<script src="https://assets.handwerk.check24.de/build/cs/55741.8e67b51e.js" defer></script>
+<script
+src="https://assets.handwerk.check24.de/build/cs/consumer-desktop-journey-simplified-generated-tiling-postcode.b0d7c51f.js"
+defer></script>
+<script type="text/javascript"
+src="https://wireframe.check24.de/2023-1-23/assets/desktop/wireframe.min.js"></script> -->
+
 <form method="post" class="flex flex-col justify-between max-w-md mx-auto">
   <input class="bg-gray-100 rounded border h-12 m-2 p-4" name="postcode" id="postcode" placeholder="Postcode" required></input>
   <div class="flex mx-auto mt-4">
   <input class="bg-blue-500 px-8 py-4 text-white font-bold rounded-xl" type="submit" value="Search">
   </div>
 </form>
+
 
 {% endblock %}
