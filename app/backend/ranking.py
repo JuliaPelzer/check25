@@ -1,4 +1,3 @@
-import json
 import os
 import pathlib
 import sqlite3
@@ -59,15 +58,18 @@ class ProviderRanker:
 
     def __load_data(self) -> None:
         self.postcodes = pd.read_sql_query("SELECT * FROM postcode", self.db)
+        self.postcodes.set_index("postcode", inplace=True)
         self.providers = pd.read_sql_query(
             "SELECT * FROM service_provider_profile", self.db
         )
+        self.providers.set_index("id", inplace=True)
         self.qualities = pd.read_sql_query(
             "SELECT * FROM quality_factor_score", self.db
         )
+        self.qualities.rename(columns={"profile_id": "id"}, inplace=True)
+        self.qualities.set_index("id", inplace=True)
         # TODO update this on patch
-        self.providers.rename(columns={"id": "profile_id"}, inplace=True)
-        self.providers = pd.merge(self.providers, self.qualities, on="profile_id")
+        self.providers = pd.merge(self.providers, self.qualities, on="id")
         self.profile_scores = (
             0.4 * self.providers["profile_picture_score"]
             + 0.6 * self.providers["profile_description_score"]
@@ -79,7 +81,7 @@ class ProviderRanker:
         if result is not None:
             return result
 
-        data = self.postcodes[self.postcodes["postcode"] == postcode].iloc[0]
+        data = self.postcodes.loc[postcode]
         driving_distance_bonus = 0
         if data["postcode_extension_distance_group"] == "group_b":
             driving_distance_bonus = 2
@@ -107,13 +109,11 @@ class ProviderRanker:
         )
         candidates = self.providers[max_distance_mask].copy()
         candidates["rankingScore"] = ranks
-        candidates.rename(columns={"profile_id": "id"}, inplace=True)
         candidates["name"] = candidates["first_name"] + " " + candidates["last_name"]
 
         result = candidates.sort_values(by="rankingScore", ascending=False)[
-            ["id", "name", "rankingScore"]
+            ["name", "rankingScore"]
         ]
-
         self.cache.insert(postcode, result)
         return result
 
