@@ -156,7 +156,17 @@ class Cache:
 
 
 if __name__ == "__main__":
+    import argparse
+    import time
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("postcode", type=str, default="85375", nargs="?")
+    args = parser.parse_args()
     db_path = pathlib.Path("app/backend/data/db.sqlite")
+    start = time.perf_counter()
     ranker = ProviderRanker(db_path)
-    results = ranker.rank("85375")
+    print(f"Loading took {time.perf_counter() - start}s")
+    start = time.perf_counter()
+    results = ranker.rank(args.postcode)
+    print(f"{len(results)} results in {(time.perf_counter() - start)*1e3}ms")
     print(results.iloc[:20])
