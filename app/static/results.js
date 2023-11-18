@@ -32,6 +32,10 @@ function show_more() {
     provider_list.appendChild(clone);
     displayed = i + 1;
   }
+
+  if (displayed >= craftsmen.length) {
+    document.getElementById("more").remove()
+  }
 }
 
 make_interactive()
