@@ -5,12 +5,14 @@
 <h1 class="font-extrabold text-blue-950 text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">Search for Craftmen
 </h1>
 <form method="post" class="flex flex-col justify-between max-w-md mx-auto">
-  <input class="bg-gray-100 rounded border h-12 m-2 p-4" name="postcode" id="postcode" placeholder="Your postcode"
-    required></input>
-  <div class="flex mx-auto mt-4">
-    <input class="bg-blue-950 px-8 py-4 text-white font-bold rounded-xl" type="submit" value="Search">
+  <div class="flex">
+    <div class="flex-grow bg-gray-100 rounded border mx-auto my-4 p-4">
+      <input class="px-auto bg-gray-100" name="postcode" id="postcode" placeholder="Your postcode" required></input>
+    </div>
+    <div class="flex-none bg-blue-950 m-4 px-8 rounded-xl">
+      <input class="text-white font-bold m-4" type="submit" value="Search">
+    </div>
   </div>
 </form>
-
 
 {% endblock %}
