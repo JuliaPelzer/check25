@@ -25,7 +25,7 @@ def dist(
     lon_providers : pd.DataFrame
         Longitudes of the providers
     """
-    R = 6371  # radius of the earth in km
+    R = 6371000  # radius of the earth in m
     # adapted from http://janmatuschek.de/LatitudeLongitudeBoundingCoordinates
     return (
         np.arccos(
@@ -72,7 +72,7 @@ class ProviderRanker:
             + 0.6 * self.providers["profile_description_score"]
         )
 
-    def _ranking_indices(self, postcode):
+    def ranking_indices(self, postcode):
         # TODO document
         data = self.postcodes[self.postcodes["postcode"] == postcode].iloc[0]
         driving_distance_bonus = 0
@@ -83,18 +83,31 @@ class ProviderRanker:
         distances = dist(
             data["lat"], data["lon"], self.providers["lat"], self.providers["lon"]
         )
-        # TODO remove where driving distance > MAX_DRIVING_DISTANCE
-        default_distance = 80
-        distance_scores = 1 - (distances / (default_distance + driving_distance_bonus))
-        distance_weight = np.where(distances > default_distance, 0.01, 0.15)
-        ranks = (
-            distance_weight * distance_scores
-            + (1 - distance_weight) * self.profile_scores
+        max_distance_mask = (
+            distances < self.providers["max_driving_distance"] + driving_distance_bonus
         )
-        ranks: pd.DataFrame = ranks.to_numpy()
-        # TODO maybe sort differently if indices are not conserved
-        ranking = np.argsort(ranks)[::-1]
-        return ranking
+        default_distance = 80
+        distance_scores = 1 - (
+            distances[max_distance_mask] / (default_distance + driving_distance_bonus)
+        )
+        distance_weight = np.where(
+            distances[max_distance_mask] > default_distance, 0.01, 0.15
+        )
+        ranks: pd.DataFrame = (
+            distance_weight * distance_scores
+            + (1 - distance_weight) * self.profile_scores[max_distance_mask]
+        )
+        candidates = self.providers[max_distance_mask]
+        candidates["rank"] = ranks
+        return candidates.sort_values(by="rank", ascending=False)
 
-    def providers(self, indices):
-        self.providers.iloc[indices]
+
+if __name__ == "__main__":
+    data_dir = pathlib.Path("app/backend/data")
+    ranker = ProviderRanker(
+        data_dir / "service_provider_profile.json",
+        data_dir / "postcode.json",
+        data_dir / "quality_factor_score.json",
+    )
+    results = ranker.ranking_indices("85375")
+    print(results.iloc[:20])
