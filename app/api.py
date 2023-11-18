@@ -11,7 +11,7 @@ bp = Blueprint("api", __name__)
 def craftsmen():
     postalcode = request.args["postalcode"]
     print("test")
-    result = provider_ranker.ranking_indices(postalcode)
+    result = provider_ranker.rank(postalcode)
 
     return str(result)
 

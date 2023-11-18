@@ -67,7 +67,7 @@ class ProviderRanker:
             + 0.6 * self.providers["profile_description_score"]
         )
 
-    def ranking_indices(self, postcode):
+    def rank(self, postcode):
         # TODO document
         data = self.postcodes[self.postcodes["postcode"] == postcode].iloc[0]
         driving_distance_bonus = 0
@@ -108,5 +108,5 @@ class ProviderRanker:
 if __name__ == "__main__":
     db_path = pathlib.Path("app/backend/data/db.sqlite")
     ranker = ProviderRanker(db_path)
-    results = ranker.ranking_indices("85375")
+    results = ranker.rank("85375")
     print(results.iloc[:20])

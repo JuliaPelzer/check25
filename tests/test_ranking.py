@@ -5,7 +5,7 @@ def test_ranking_85375():
 
     ground_truth = pd.read_csv("tests/ranking_85375.csv", index_col=0)
     ranker = ProviderRanker("app/backend/data/db.sqlite")
-    result = ranker.ranking_indices("85375")
+    result = ranker.rank("85375")
 
     for gt, res in zip(ground_truth.itertuples(), result.itertuples()):
         assert gt.id == res.id
