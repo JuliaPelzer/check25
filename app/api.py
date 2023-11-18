@@ -1,6 +1,8 @@
 from flask import Blueprint, request, Response
 from app import provider_ranker
 from app.backend import interfaces
+import numpy as np
+import json
 
 bp = Blueprint("api", __name__)
 
@@ -16,7 +18,9 @@ def craftsmen():
 
 @bp.route("/craftman/<int:craftman_id>", methods=["PATCH"])
 def craftman(craftman_id):
-    request.json
+    profile_picture_score = request.json.get("profilePictureScore", None)
+    profile_description_score = request.json.get("profileDescriptionScore", None)
+    max_driving_distance = request.json.get("maxDrivingDistance", None)
     provider_ranker.update(
         craftman_id,
         profile_picture_score,
@@ -24,4 +28,7 @@ def craftman(craftman_id):
         max_driving_distance,
     )
 
-    return "craftman_id: " + str(craftman_id)
+    data = provider_ranker.get_Patch_Response(craftman_id)
+    data = json.dumps(data)
+
+    return Response(data, mimetype='application/json')
