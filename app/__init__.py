@@ -42,11 +42,6 @@ def create_app(test_config=None):
 
     app.register_blueprint(auth.bp)
 
-    # from app import todo
-
-    # app.register_blueprint(todo.bp)
-    # app.add_url_rule("/", endpoint="index")
-
     from app import api
 
     app.register_blueprint(api.bp)
