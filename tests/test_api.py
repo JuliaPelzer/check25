@@ -35,5 +35,5 @@ def test_json_data(client):
     
 def test_update(client):
     numba = random.randrange(1, 100000)
-    response = client.patch("/craftman/10642", json={"maxDrivingDistance": numba})
+    response = client.patch("/craftman/1", json={"maxDrivingDistance": numba})
     assert response.json["updated"]["maxDrivingDistance"]
