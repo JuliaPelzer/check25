@@ -38,6 +38,13 @@
 </head>
 
 <body class="md:bg-gray-50">
+  <header>
+    <div class="bg-blue-950 max-w-screen-md mx-auto">
+      <h1 class="font-extrabold text-white text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">
+        Search for Craftmen by Check25
+      </h1>
+    </div>
+  </header>
   <div class="bg-white max-w-screen-md md:shadow-md mx-auto rounded-md">
     <nav class="justify-between max-w-screen-md flex flex-wrap md:rounded-md md:mt-8">
       <ul class="flex space-x-4 p-4 pr-8 self-center sm:m-0 m-auto">
@@ -45,7 +52,7 @@
         </a>
       </ul>
     </nav>
-    <section class="max-w-screen-md mx-auto pt-8 pb-8">
+    <section class="max-w-screen-md mx-auto">
       {% for message in get_flashed_messages() %}
       <div class="text-center">{{ message }}</div>
       {% endfor %} {% block content %}{% endblock %}
