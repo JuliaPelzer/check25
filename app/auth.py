@@ -17,7 +17,7 @@ from app.db import get_db
 bp = Blueprint("auth", __name__)
 
 
-@bp.route("/", methods=("GET", "POST"))
+@bp.route("/", methods=(["GET"]))
 def search():
     if request.method == "POST":
         postcode = request.form["postcode"]
@@ -26,7 +26,7 @@ def search():
 
         if error is None:
             # TODO call stuff
-            return render_template("auth/results.html")
+            return redirect(url_for("auth.results"))
 
 
         flash(error)
@@ -35,35 +35,10 @@ def search():
 
 
 
-@bp.route("/details", methods=("GET", "POST"))
+@bp.route("/details", methods=(["GET"]))
 def details():
     return render_template("auth/details.html")
 
-
-# @bp.before_app_request
-# def load_logged_in_user():
-#     user_id = session.get("user_id")
-
-#     if user_id is None:
-#         g.user = None
-#     else:
-#         g.user = (
-#             get_db().execute("SELECT * FROM user WHERE id = ?", (user_id,)).fetchone()
-#         )
-
-
-# @bp.route("/logout")
-# def logout():
-#     session.clear()
-#     return redirect(url_for("index"))
-
-
-# def login_required(view):
-#     @functools.wraps(view)
-#     def wrapped_view(**kwargs):
-#         if g.user is None:
-#             return redirect(url_for("auth.login"))
-
-#         return view(**kwargs)
-
-#     return wrapped_view
+@bp.route("/results", methods=(["GET"]))
+def results():
+    return render_template("auth/results.html")
