@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<h1 class="font-extrabold text-blue-950 text-3xl p-4 pl-8 pr-8 m-auto sm:m-0">Search for Craftmen
+</h1>
 <form method="post" class="flex flex-col justify-between max-w-md mx-auto">
-  <input class="bg-gray-100 rounded border h-12 m-2 p-4" name="postcode" id="postcode" placeholder="Postcode"
+  <input class="bg-gray-100 rounded border h-12 m-2 p-4" name="postcode" id="postcode" placeholder="Your postcode"
     required></input>
   <div class="flex mx-auto mt-4">
-    <input class="bg-blue-500 px-8 py-4 text-white font-bold rounded-xl" type="submit" value="Search">
+    <input class="bg-blue-950 px-8 py-4 text-white font-bold rounded-xl" type="submit" value="Search">
   </div>
 </form>
 
