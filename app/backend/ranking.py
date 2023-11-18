@@ -58,12 +58,10 @@ class ProviderRanker:
         self.__load_data()
 
     def __load_data(self) -> None:
-        with open(self.provider_json, encoding="utf-8") as f:
-            self.providers = pd.DataFrame(json.loads(f.read()))
-        with open(self.postcodes_json, encoding="utf-8") as f:
-            self.postcodes = pd.DataFrame(json.loads(f.read()))
-        with open(self.qualities_json, encoding="utf-8") as f:
-            self.qualities = pd.DataFrame(json.loads(f.read()))
+        self.postcodes = pd.read_json(self.postcodes_json, encoding='utf-8', dtype={'postcode': 'str'})
+        self.providers = pd.read_json(self.provider_json, encoding='utf-8')
+        self.qualities = pd.read_json(self.qualities_json, encoding='utf-8')
+    
         # TODO update this on catch
         self.providers.rename(columns={"id": "profile_id"}, inplace=True)
         self.providers = pd.merge(self.providers, self.qualities, on="profile_id")
