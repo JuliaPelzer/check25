@@ -57,8 +57,7 @@ class ProviderRanker:
         # update than to write a new json file at every update.
         # For the efficiency of the ranking, the data is loaded into memory.
         self.db_path = db_path
-        self.db = sqlite3.connect(self.db_path)
-
+        self.db = sqlite3.connect(self.db_path, check_same_thread=False)
         self.__load_data()
 
     def __load_data(self) -> None:
@@ -90,15 +89,15 @@ class ProviderRanker:
         return dict(
             id=craftsman_id,
             updated=dict(
-                maxDrivingDistance=self.providers.at[
-                    craftsman_id, "max_driving_distance"
-                ],
-                profilePictureScore=self.providers.at[
-                    craftsman_id, "profile_picture_score"
-                ],
-                profileDescriptionScore=self.providers.at[
-                    craftsman_id, "profile_description_score"
-                ],
+                maxDrivingDistance=int(
+                    self.providers.at[craftsman_id, "max_driving_distance"]
+                ),
+                profilePictureScore=int(
+                    self.providers.at[craftsman_id, "profile_picture_score"]
+                ),
+                profileDescriptionScore=int(
+                    self.providers.at[craftsman_id, "profile_description_score"]
+                ),
             ),
         )
 
