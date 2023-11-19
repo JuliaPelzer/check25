@@ -4,3 +4,4 @@ services:
     image: check25:latest
     ports:
       - 80:5000
+    build: .
