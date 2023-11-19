@@ -44,6 +44,10 @@ pre-commit install
 
 setup check24 database
 
-```
+```shell
 python app/backend/setup_db.py
+```
+
+```shell
+docker run -p 80:5000 check25:latest
 ```
