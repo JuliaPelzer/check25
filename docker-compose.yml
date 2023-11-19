@@ -1,0 +1,6 @@
+version: '3.1'
+services:
+  check25:
+    image: check25:latest
+    ports:
+      - 80:5000
